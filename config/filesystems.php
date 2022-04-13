@@ -42,6 +42,24 @@ return [
             'visibility' => 'public',
         ],
 
+        'product' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/product',
+            'visibility' => 'public',
+        ],
+
+        'banner' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/banner',
+            'visibility' => 'public',
+        ],
+
+        'gallery' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/gallery',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

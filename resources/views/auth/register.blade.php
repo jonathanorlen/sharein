@@ -4,17 +4,29 @@
             <x-jet-authentication-card-logo />
         </x-slot>
 
-        <x-jet-validation-errors class="mb-3" />
+        {{-- <x-jet-validation-errors class="mb-3" /> --}}
 
         <div class="card-body">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
                 <div class="mb-3">
-                    <x-jet-label value="{{ __('Name') }}" />
+                    <x-jet-label value="{{ __('Domain') }}" />
+
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0"
+                            id="basic-addon3"><strong>sharein.com/</strong></span>
+                        <x-jet-input class="{{ $errors->has('domain') ? 'is-invalid' : '' }}" type="text" name="domain"
+                            :value="old('domain')" required autofocus autocomplete="name" />
+                        <x-jet-input-error for="domain"></x-jet-input-error>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <x-jet-label value="{{ __('Nama') }}" />
 
                     <x-jet-input class="{{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name"
-                                 :value="old('name')" required autofocus autocomplete="name" />
+                        :value="old('name')" required autofocus autocomplete="name" />
                     <x-jet-input-error for="name"></x-jet-input-error>
                 </div>
 
@@ -22,7 +34,7 @@
                     <x-jet-label value="{{ __('Email') }}" />
 
                     <x-jet-input class="{{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email"
-                                 :value="old('email')" required />
+                        :value="old('email')" required />
                     <x-jet-input-error for="email"></x-jet-input-error>
                 </div>
 
@@ -30,14 +42,15 @@
                     <x-jet-label value="{{ __('Password') }}" />
 
                     <x-jet-input class="{{ $errors->has('password') ? 'is-invalid' : '' }}" type="password"
-                                 name="password" required autocomplete="new-password" />
+                        name="password" required autocomplete="new-password" />
                     <x-jet-input-error for="password"></x-jet-input-error>
                 </div>
 
                 <div class="mb-3">
                     <x-jet-label value="{{ __('Confirm Password') }}" />
 
-                    <x-jet-input class="form-control" type="password" name="password_confirmation" required autocomplete="new-password" />
+                    <x-jet-input class="form-control" type="password" name="password_confirmation" required
+                        autocomplete="new-password" />
                 </div>
 
                 @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -46,9 +59,9 @@
                             <x-jet-checkbox id="terms" name="terms" />
                             <label class="custom-control-label" for="terms">
                                 {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                            'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'">'.__('Terms of Service').'</a>',
-                                            'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'">'.__('Privacy Policy').'</a>',
-                                    ]) !!}
+    'terms_of_service' => '<a target="_blank" href="' . route('terms.show') . '">' . __('Terms of Service') . '</a>',
+    'privacy_policy' => '<a target="_blank" href="' . route('policy.show') . '">' . __('Privacy Policy') . '</a>',
+]) !!}
                             </label>
                         </div>
                     </div>
