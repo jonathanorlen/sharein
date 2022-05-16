@@ -27,9 +27,10 @@ class User extends Authenticatable
         'name',
         'email',
         'domain',
-        'profilePicture',
-        'profileTitle',
+        'profile_picture',
+        'profile_title',
         'bio',
+        'about',
         'password',
     ];
 

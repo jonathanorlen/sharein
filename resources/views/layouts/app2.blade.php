@@ -26,51 +26,15 @@
 </head>
 
 <body class="font-sans antialiased bg-light">
-    <x-jet-banner />
-    @livewire('navigation-menu')
-
     <!-- Page Heading -->
-    <header class="d-flex py-3 bg-white shadow-sm border-bottom">
-        <div class="container">
-            <ul class="list-group list-group-horizontal">
-                <li class="list-group-item border-0 py-2 ps-0 pr-2 mx-0">
-                    <a class="list-group-item border-0 py-0 ps-0 pr-0 mx-0" href="{{ route('link') }}">
-                        Link
-                    </a>
-                </li>
-                <li class="list-group-item border-0 py-2 ps-0 pr-2 mx-0">
-                    <a class="list-group-item border-0 py-0 ps-0 pr-0 mx-0" href=" http://127.0.0.1:8000/dashboard">
-                        Banner
-                    </a>
-                </li>
-                <li class="list-group-item border-0 py-2 ps-0 pr-2 mx-0">
-                    <a class="list-group-item border-0 py-0 ps-0 pr-0 mx-0" href=" http://127.0.0.1:8000/dashboard">
-                        Social Media
-                    </a>
-                </li>
-                <li class="list-group-item border-0 py-2 ps-0 pr-2 mx-0">
-                    <a class="list-group-item border-0 py-0 ps-0 pr-0 mx-0" href="{{ route('product') }}">
-                        Produk
-                    </a>
-                </li>
-                <li class="list-group-item border-0 py-2 ps-0 pr-2 mx-0">
-                    <a class="list-group-item border-0 py-0 ps-0 pr-0 mx-0" href="{{ route('category') }} ">
-                        Kategori
-                    </a>
-                </li>
-                <li class="list-group-item border-0 py-2 ps-0 pr-2 mx-0">
-                    <a class="list-group-item border-0 py-0 ps-0 pr-0 mx-0" href=" http://127.0.0.1:8000/dashboard">
-                        Galeri
-                    </a>
-                </li>
-                <li class="list-group-item border-0 py-2 ps-0 pr-2 mx-0">
-                    <a class="list-group-item border-0 py-0 ps-0 pr-0 mx-0" href=" http://127.0.0.1:8000/dashboard">
-                        Pengaturan
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </header>
+    <x-jet-banner />
+    
+    @livewire('navigation-menu')
+    @if (!request()->is('panel/statistik*'))
+        @include('layouts.component.header')
+    @endif
+
+
 
     <!-- Page Content -->
     <main class="container">

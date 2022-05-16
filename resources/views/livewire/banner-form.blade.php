@@ -8,7 +8,10 @@
         </div>
         <div class="modal-body p-0">
             @if ($image)
-                <img id="blah" src="{{ $image->temporaryUrl() }}" class="w-100" alt="your image" />
+                {{-- <img id="blah" src="{{ $image->temporaryUrl() }}" class="w-100" alt="your image" /> --}}
+                <div style="background-image:url('{{ $image->temporaryUrl() }}') " class="image-ratio">
+
+                </div>
             @else
                 <img src="{{ asset('attribute/image/placeholder-image.jpg') }}" alt="" class="w-100"
                     id="imageplaceholder">
@@ -44,3 +47,19 @@
         </div>
     </div>
 </div>
+@push('styles')
+    <style>
+        .image-ratio {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("{{ asset('attribute/image/placeholder-image.jpg') }}");
+            width: 100%;
+            padding-top: 50%;
+            /* padding-left: 0%; */
+            /* 1:1 Aspect Ratio */
+            position: relative;
+            /* If you want text inside of it */
+        }
+    </style>
+@endpush

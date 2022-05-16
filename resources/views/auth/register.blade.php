@@ -67,7 +67,7 @@
                     </div>
                 @endif
 
-                <div class="mb-0">
+                {{-- <div class="mb-0">
                     <div class="d-flex justify-content-end align-items-baseline">
                         <a class="text-muted me-3 text-decoration-none" href="{{ route('login') }}">
                             {{ __('Already registered?') }}
@@ -77,6 +77,18 @@
                             {{ __('Register') }}
                         </x-jet-button>
                     </div>
+                </div> --}}
+                <div class="mt-xl">
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary text-uppercase">
+                            Daftar Gratis
+                        </button>
+                    </div>
+                </div>
+                <div class="text-center mt-xxl">
+                    Sudah memiliki akun? 
+                    <a class="text-primary" href="{{ route('login') }}">{{ __('Masuk') }}
+                    </a>
                 </div>
             </form>
         </div>

@@ -1,4 +1,4 @@
-<div class="col-md-6 pe-md-5 side-left">
+<div class="col-md-6 pe-md-5 side-left" wire:sortable-group.handle>
     <div class="d-grid mb-xxl mt-xxl">
         <button class="btn btn-primary btn-lg text-white" type="button" wire:loading.attr="disabled" wire:target="create"
             wire:click="create">Tambah
@@ -14,7 +14,7 @@
             <li wire:sortable.item="{{ $item->id }}" wire:key="item-{{ $item->id }}"
                 class="col-12 bg-white p-l mb-l list-group-item rounded-s border border-neutral-20">
                 <div class="row mb-l">
-                    <div class="col-11">
+                    <div class="col-10">
                         <div class="row">
                             <div class="col-12 mb-s">
                                 <input type="text" value="{{ $item->name }}"
@@ -27,32 +27,39 @@
                                     wire:change="update($event.target.value, {{ $item->id }},{{ '"url"' }})"
                                     class="form-control link border-0 bg-white p-0 shadow-none rounded-0 text-s"
                                     id="title-{{ $item->id }}" placeholder="Url">
+                                @error('url_'.$item->id)
+                                    <span class="text-danger error">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                     </div>
-                    <div class="col-1">
-                        <i class="fa fa-bars float-end fs-5" wire:sortable.handle></i>
+                    <div class="col-2">
+                        <img src="{{ asset('icons/menu.svg') }}" wire:sortable.handle alt="menu"
+                            class="float-end">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6">
                         <div class="form-check form-switch">
-                            <input class="form-check-input fs-5" style="margin-left:-2em" type="checkbox"
-                                id="flexSwitchCheckChecked" @if ($item->status == 'active' && $item->name != '' && $item->url != '') checked @endif
+                            <input class="form-check-input fs-5 text-neutral-100" style="margin-left:-2em"
+                                type="checkbox" id="flexSwitchCheckChecked"
+                                @if ($item->status == 'active' && $item->name != '' && $item->url != '') checked @endif
                                 @if ($item->name == '' || $item->url == '') disabled @endif
                                 wire:change="update($event.target.checked, {{ $item->id }},{{ '"status"' }})">
                         </div>
                     </div>
                     <div class=" col-6">
-                        <i class="fa fa-trash float-end fs-5"
-                            wire:click="delete({{ $item->id }}, {{ $item->userId }}, {{ $item->order }})"></i>
+                        <img src="{{ asset('icons/trash-2.svg') }}"
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            wire:click="setDelete({{ $item->id }}, {{ $item->userId }}, {{ $item->order }})"
+                            alt="menu" class="float-end">
                     </div>
                 </div>
             </li>
         @endforeach
     </ul>
-    <div class="mt-5" style="height: 100px"></div>
-
+    <div class="mt-5"></div>
+    @livewire('component.modal-delete')
     @push('styles')
         <style>
             .draggable-mirror {
@@ -63,7 +70,8 @@
             }
 
             .side-left {
-                height: calc(100vh - 110px);
+                /* height: 100%; */
+                height: calc(100vh - 140px);
                 overflow-y: scroll;
             }
 

@@ -19,6 +19,7 @@ class CreateSocialMediaTable extends Migration
             $table->foreignId('userId')->references('id')->on('users')->cascadeOnDelete();
             $table->string('facebook', 100)->nullable();
             $table->string('instagram', 100)->nullable();
+            $table->string('twitter', 100)->nullable();
             $table->string('whatsapp', 100)->nullable();
             $table->string('line', 100)->nullable();
             $table->string('email', 100)->nullable();

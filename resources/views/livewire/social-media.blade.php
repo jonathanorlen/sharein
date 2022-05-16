@@ -1,12 +1,15 @@
 <div class="col-md-6 pe-md-5 side-left">
     <div class="row mt-5 mb-5 pb-3">
         <div class="col-md-12">
-            <div class="card p-4">
+            <div class="card p-4 border-neutral-20 border">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Whatsapp</label>
-                    <input type="text" wire:change="updateSocialMedia($event.target.value,{{ '"whatsapp"' }})"
-                        wire:model="whatsapp" class="form-control @error('whatsapp') is-invalid @enderror"
-                        id="exampleFormControlInput1" placeholder="+62 890-7897-XXXX">
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">+62</span>
+                        <input type="text" wire:change="updateSocialMedia($event.target.value,{{ '"whatsapp"' }})"
+                            wire:model="whatsapp" class="form-control @error('whatsapp') is-invalid @enderror"
+                            id="exampleFormControlInput1" placeholder="+62 890-7897-XXXX">
+                    </div>
                     @error('whatsapp')
                         <span class="text-danger error">{{ $message }}</span>
                     @enderror
@@ -22,9 +25,12 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Instagram</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">@</span>
                     <input type="text" wire:change="updateSocialMedia($event.target.value,{{ '"instagram"' }})"
                         wire:model="instagram" class="form-control @error('instagram') is-invalid @enderror"
                         id="exampleFormControlInput1" placeholder="">
+                    </div>
                     @error('instagram')
                         <span class="text-danger error">{{ $message }}</span>
                     @enderror

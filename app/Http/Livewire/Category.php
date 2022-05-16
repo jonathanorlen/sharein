@@ -7,7 +7,9 @@ use App\Models\Category as Data;
 
 class Category extends Component
 {   
-    public $data;
+    public $data, $id_delete, $order_delete, $user_id_delete;
+    protected $listeners = ['refreshData' => '$refresh',
+                            'delete'];
 
     public function render()
     {   
@@ -24,13 +26,23 @@ class Category extends Component
     }
 
     public function create(){
-        foreach ($this->data as $item) {
-            Data::find($item['id'])->update(['order' => $item['order']+1]);
-        }
+        if($this->data->count() > 20){
+            $this->dispatchBrowserEvent("toast",
+                [
+                    'header' => 'Perhatian!',
+                    'message' => 'kategori tidak boleh melebihi dari 20',
+                    'status' => 'danger',
+                ]
+            );
+        }else{
+            foreach ($this->data as $item) {
+                Data::find($item['id'])->update(['order' => $item['order']+1]);
+            }
 
-        Data::create([
-            'userId' => auth()->id()
-        ]);
+            Data::create([
+                'userId' => auth()->id()
+            ]);
+        }
     }
 
     public function update($value, $id, $type){
@@ -51,8 +63,14 @@ class Category extends Component
         // }
     }
 
-    public function delete($id, $userId, $order){
-        Data::find($id)->delete();
-        Data::where([['userId','=',$userId], ['order','>',$order]])->decrement('order',1);
+    public function setDelete($id, $userId, $order){
+        $this->id_delete = $id;
+        $this->order_delete = $order;
+        $this->user_id_delete = $userId;
+    }
+
+    public function delete(){
+        Data::find($this->id_delete)->delete();
+        Data::where([['userId','=',$this->user_id_delete], ['order','>',$this->order_delete]])->decrement('order',1);
     }
 }

@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('domain');
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('profilePicture')->nullable();
-            $table->string('profileTitle')->nullable();
+            $table->string('profile_picture')->nullable();
+            $table->string('profile_title')->nullable();
             $table->text('bio')->nullable();
+            $table->text('about')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();

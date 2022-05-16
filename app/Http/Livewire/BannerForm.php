@@ -23,16 +23,31 @@ class BannerForm extends Master
     }
 
     public function create(){
-        $data = $this->validate();
-        
-        $data['userId'] = auth()->id();
-        $data['status'] = 'active';
-        $data['image'] = $this->upload($this->image, $this->old_image, 'banner');
+        $search = Banner::where('userId', auth()->id())->get();
+        if($search->count() > 8){
+            $this->dispatchBrowserEvent("toast",
+                [
+                    'header' => 'Perhatian!',
+                    'message' => 'Banner telah melebihi kuota 8',
+                    'status' => 'danger',
+                ]
+            );
+        }else{
+            $data = $this->validate();
+            
+            $data['userId'] = auth()->id();
+            $data['order'] = 1;
+            $data['status'] = 'active';
+            $data['image'] = $this->uploadImageBanner($this->image, $this->old_image, 'banner');
+            foreach ($search as $item) {
+                Banner::find($item['id'])->update(['order' => $item['order']+1]);
+            }
 
-        Banner::create($data);
-        $this->dispatchBrowserEvent("hide-modal");
-        $this->emit('refreshData');
-        $this->clear();
+            Banner::create($data);
+            $this->dispatchBrowserEvent("hide-modal");
+            $this->emit('refreshData');
+            $this->clear();
+        }
     }
 
     public function clear(){

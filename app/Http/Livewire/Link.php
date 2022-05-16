@@ -5,10 +5,18 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Link as Links;
 use DB;
+// use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class Link extends Component
 {   
-    public $data;
+    public $data, $id_delete, $order_delete, $user_id_delete;
+    protected $listeners = ['delete'];
+
+    protected function rules(){
+        $rules = ['url' => 'nullable|url'];
+        return $rules;
+    }
     public function render()
     {   
         $this->data = Links::orderBy('order','asc')->where('userId',auth()->id())->get();
@@ -24,16 +32,31 @@ class Link extends Component
     }
 
     public function create(){
-        foreach ($this->data as $item) {
-            Links::find($item['id'])->update(['order' => $item['order']+1]);
+        if($this->data->count() > 10){
+            $this->dispatchBrowserEvent("toast",
+                [
+                    'header' => 'Perhatian!',
+                    'message' => 'Link tidak boleh melebihi dari 10',
+                    'status' => 'danger',
+                ]
+            );
+        }else{
+            foreach ($this->data as $item) {
+                Links::find($item['id'])->update(['order' => $item['order']+1]);
+            }
+    
+            Links::create([
+                'userId' => auth()->id()
+            ]);
         }
-
-        Links::create([
-            'userId' => auth()->id()
-        ]);
     }
 
     public function update($value, $id, $type){
+        if($type == "url"){
+            $name = 'url_'.$id;
+            $data[$name] = $value;
+            Validator::make( $data,[ $name => 'nullable|url'],[$name.'.url' => 'Format link tidak sesuai'])->validate();
+        }
         if($type == "status"){
             if($value == true){
                 $value = "active";
@@ -51,8 +74,14 @@ class Link extends Component
         // }
     }
 
-    public function delete($id, $userId, $order){
-        Links::find($id)->delete();
-        Links::where([['userId','=',$userId], ['order','>',$order]])->decrement('order',1);
+    public function setDelete($id, $userId, $order){
+        $this->id_delete = $id;
+        $this->order_delete = $order;
+        $this->user_id_delete = $userId;
+    }
+
+    public function delete(){
+        Links::find($this->id_delete)->delete();
+        Links::where([['userId','=',$this->user_id_delete], ['order','>',$this->order_delete]])->decrement('order',1);
     }
 }

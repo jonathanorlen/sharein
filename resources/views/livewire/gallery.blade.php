@@ -1,17 +1,26 @@
 <div class="col-md-6 pe-md-5 side-left">
-    <div class="d-grid mb-4 mt-5">
+    <div class="d-grid mb-xxl mt-xxl">
         <button class="btn btn-primary btn-lg text-white" type="button" data-bs-toggle="modal"
             data-bs-target="#galleryFormModal">Tambah
             Galeri</button>
     </div>
-    <div class="row">
+    <div class="row gx-3 gy-3">
         @foreach ($data as $item)
-            <div class="col-6 col-md-4 mb-4">
+            <div class="col-6 col-md-4 col-xs-6">
                 <div class="card">
                     <div class="image-ratio rounded-top rounded-3"
                         style="background-image:url('{{ url('uploads/gallery/' . $item->image) }}') !important">
+                        <div style="width: 40px; height:40px; background-color:#fff; border-radius:100px; bottom: 0% !important;"
+                            class="d-flex aligns-items-center justify-content-center position-absolute end-0 translate-middle">
+                            <img src="{{ asset('icons/trash-2.svg') }}" alt="menu" style="width: 24px" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            wire:click="setDelete({{ $item->id }})">
+                        </div>
+                        {{-- <div style="width: 40px; height:40px; background-color:#fff; border-radius:100px; bottom: -1% !important; right: 48px"
+                            class="d-flex aligns-items-center justify-content-center position-absolute translate-middle">
+                            <img src="{{ asset('icons/edit-3.svg') }}" alt="menu" style="width: 24px">
+                        </div> --}}
                     </div>
-                    <div class="card-body">
+                    {{-- <div class="card-body">
                         <div class="d-flex flex-column bd-highlight">
                             <div class="row">
                                 <div class="col-6">
@@ -27,7 +36,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         @endforeach
@@ -38,6 +47,8 @@
         @livewire('gallery-form')
 
     </div>
+    @livewire('component.modal-delete')
+
 </div>
 
 @push('styles')
@@ -49,42 +60,10 @@
             background-image: url("{{ asset('attribute/image/placeholder-image.jpg') }}");
             width: 100%;
             padding-top: 100%;
+            /* padding-left: 0%; */
             /* 1:1 Aspect Ratio */
             position: relative;
             /* If you want text inside of it */
-        }
-
-        .draggable-mirror {
-            background-color: white !important;
-            width: 50%;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            list-style-type: none;
-        }
-
-        .side-left {
-            height: calc(100vh - 110px);
-            overflow-y: scroll;
-        }
-
-        /* width */
-        ::-webkit-scrollbar {
-            width: 4px;
-            border-radius: 10px
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
         }
 
     </style>

@@ -3,9 +3,9 @@
         <div class="row">
             <div class="col-md-4 offset-md-4">
                 <img src="{{ url('uploads/product/' . $old_image) }}" alt="" class="w-100">
-                <div class="image-ratio rounded-top rounded-3"
+                {{-- <div class="image-ratio rounded-top rounded-3"
                     style="background-image:url({{ url('uploads/product/' . $old_image) }})">
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="mb-3">
@@ -45,16 +45,7 @@
             <textarea wire:model="description" class="form-control @error('description') is-invalid @enderror"
                 id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-        <hr>
-        {{-- <a class="btn btn-outline-primary btn-lg" type="button" href="{{ route('product.form') }}}}">Tambah
-            Link
-            <div wire:loading wire:target="create" class="spinner-border text-light spinner-border-sm ms-2"
-                role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </a> --}}
-        <hr>
-        <button @if ($type == 'create') wire:click="create"@else wire:click="update" @endif
+        <button @if ($type != 'edit') wire:click="create"@else wire:click="update" @endif
             class="btn btn-primary btn-lg" type="button">Simpan
             <div wire:loading wire:target="create" class="spinner-border text-light spinner-border-sm ms-2"
                 role="status">
@@ -62,6 +53,7 @@
             </div>
         </button>
     </div>
+</div>
     @push('styles')
         <style>
             <style>.image-ratio {

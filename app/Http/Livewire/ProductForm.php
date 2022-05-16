@@ -22,8 +22,7 @@ class ProductForm extends Component
     }
 
     public function mount(Product $product){
-        // dd($product->categoryId);
-        if($product){
+        if($product->id != null){
             $this->productId = $product->id;
             $this->category = $product->categoryId; 
             $this->old_image = $product->image; 

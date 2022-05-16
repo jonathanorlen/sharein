@@ -7,11 +7,28 @@ use App\Models\SocialMedia as Data;
 
 class SocialMedia extends Component
 {   
-    public $data = null, $facebook, $instagram, $whatsapp, $line, $email, $youtube, $tiktok, $telegram;
+    public $data = null, $facebook, $instagram, $whatsapp, $line, $email, $youtube, $tiktok, $telegram, $twitter;
 
     public function render()
     {   
         return view('livewire.social-media');
+    }
+
+    protected function rules(){
+        $rules = [
+            'instagram' => 'regex:/^\S*$/u',
+        ];
+
+        return $rules;
+    }
+
+    protected $messages = [
+        'instagram.regex' => 'Akun Instagram tidak boleh menggunakan spasi'
+    ];
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
     }
 
     public function mount(){

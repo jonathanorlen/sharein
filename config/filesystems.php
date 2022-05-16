@@ -60,6 +60,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'profile' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/profile',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

@@ -10,4 +10,8 @@ class Product extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function getView(){
+        return $this->hasMany(Visitor::class,'itemId')->where('type','product');
+    }
 }

@@ -11,4 +11,8 @@ class SocialMedia extends Model
 
     protected $table = "social_media";
     protected $guarded = [];
+
+    public function getUnansweredQuestionCountAttribute() {
+        return count(array_filter($this->attributes));
+    }
 }

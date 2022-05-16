@@ -18,28 +18,38 @@ Route::get('/', function () {
 });
 
 Route::get('/{domain}', \App\Http\Livewire\LandingPage::class)->name('landing_page');
+Route::get('/{domain}/{product}', \App\Http\Livewire\LandingPageProduct::class)->name('landing_page_product');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('panel')->group(function(){
-    Route::view('/dashboard', 'dashboard')->name('dashboard');
-
-    //Link
-    Route::get('/link', \App\Http\Livewire\Link::class)->name("link");
+    // Route::view('/dashboard', 'dashboard')->name('dashboard');
+    Route::get('/statistik/dashboard', \App\Http\Livewire\Analytics::class)->name("statistik");
     
-    //Category
-    Route::get('/category', \App\Http\Livewire\Category::class)->name("category");
-    
-    //Product
-    Route::get('/product', \App\Http\Livewire\Product::class)->name("product");
-    Route::get('/product/form', \App\Http\Livewire\ProductForm::class)->name("product.create");
-    Route::get('/product/edit/{product}', \App\Http\Livewire\ProductForm::class)->name("product.edit");
+    Route::prefix('website')->group(function(){
+        //Link
+        Route::get('/link', \App\Http\Livewire\Link::class)->name("link");
+        
+        //Category
+        Route::get('/category', \App\Http\Livewire\Category::class)->name("category");
+        
+        //Product
+        Route::get('/product', \App\Http\Livewire\Product::class)->name("product");
+        Route::get('/product/form/{product?}', \App\Http\Livewire\ProductForm::class)->name("product.create");
+        Route::get('/product/edit/{product}', \App\Http\Livewire\ProductForm::class)->name("product.edit");
+        Route::get('/product/link/{productId}', \App\Http\Livewire\ProductLink::class)->name("product.link");
 
-    //Social Media
-    Route::get('/social-media', \App\Http\Livewire\SocialMedia::class)->name("socialMedia");
-    
-    //Banner
-    Route::get('/banner', \App\Http\Livewire\Banner::class)->name("banner");
+        //Social Media
+        Route::get('/social-media', \App\Http\Livewire\SocialMedia::class)->name("socialMedia");
+        
+        //Banner
+        Route::get('/banner', \App\Http\Livewire\Banner::class)->name("banner");
 
-    //gallery
-    Route::get('/gallery', \App\Http\Livewire\Gallery::class)->name("gallery");
+        //gallery
+        Route::get('/gallery', \App\Http\Livewire\Gallery::class)->name("gallery");
+        
+        //setting
+        Route::get('/setting', \App\Http\Livewire\Setting::class)->name("setting");
+    });
+    
+
 });

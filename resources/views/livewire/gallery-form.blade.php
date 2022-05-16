@@ -2,9 +2,7 @@
     <div class="modal-content">
         <div class="modal-header border-bottom-0">
             <h5 class="modal-title" id="exampleModalLabel">Upload Gambar</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-0">
             @if ($image)
@@ -22,7 +20,7 @@
             <div class="row w-100">
                 <div class="col-6">
                     <div class="d-grid">
-                        <button type="button" class="btn btn-lg btn-light" data-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-lg btn-light" data-bs-dismiss="modal">Batal</button>
                     </div>
                 </div>
                 <div class="col-6">

@@ -7,8 +7,8 @@ use App\Models\Gallery as GalleryModel;
 
 class Gallery extends Component
 {   
-    public $data;
-    protected $listeners = ['refreshData' => '$refresh'];
+    public $data, $id_delete;
+    protected $listeners = ['refreshData' => '$refresh', 'delete'];
 
     public function render()
     {   
@@ -16,7 +16,11 @@ class Gallery extends Component
         return view('livewire.gallery');
     }
     
-    public function delete($id){
-        GalleryModel::find($id)->delete();
+    public function setDelete($id){
+        $this->id_delete = $id;
+    }
+
+    public function delete(){
+        GalleryModel::find($this->id_delete)->delete();
     }
 }
