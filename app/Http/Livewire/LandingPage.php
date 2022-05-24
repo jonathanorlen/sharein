@@ -24,7 +24,7 @@ class LandingPage extends Component
     public $linkLimit;
     
     public function mount($domain){
-        $user = User::where('domain', $domain)->first();
+        $user = User::where('domain', $domain)->firstOrFail();
         $this->userId = $user->id;
         $this->userDomain = $user->domain;
 
