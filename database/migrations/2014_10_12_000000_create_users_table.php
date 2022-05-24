@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('background',20)->nullable();
             $table->string('background_color',20)->default('#ffffff')->nullable();
             $table->string('color',20)->nullable();
-            $table->int('link_limit')->default(3)->nullable();
+            $table->integer('link_limit')->default(3)->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
