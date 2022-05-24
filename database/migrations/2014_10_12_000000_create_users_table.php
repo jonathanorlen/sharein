@@ -25,9 +25,9 @@ return new class extends Migration
             $table->text('about')->nullable();
             $table->string('address',200)->nullable();
             $table->text('maps')->nullable();
-            $table->string('background',20)->nullable();
-            $table->string('background_color',20)->default('#ffffff')->nullable();
-            $table->string('color',20)->nullable();
+            $table->string('background',20)->default('#ffffff')->nullable();
+            $table->string('background_color',20)->default('#0751D8')->nullable();
+            $table->string('color',20)->default('#ffffff')->nullable();
             $table->integer('link_limit')->default(3)->nullable();
             $table->string('password');
             $table->rememberToken();
