@@ -21,6 +21,7 @@ use Carbon\Carbon;
 class LandingPage extends Component
 {   
     public $userId, $userDomain, $links, $galleries, $categories, $data, $products, $select_category,$cate, $search, $social_media, $total_product, $banners, $user;
+    public $linkLimit;
     
     public function mount($domain){
         $user = User::where('domain', $domain)->first();
@@ -31,6 +32,7 @@ class LandingPage extends Component
             ['userId','=',$user->id],['status','=','active'],['name','!=',''],['url','!=','']])
         ->orderBy('order','asc')
         ->get();
+        // dd($this->links);
 
         $this->categories = Category::where([
             ['userId','=',$user->id],['title','!=','']])
@@ -46,13 +48,15 @@ class LandingPage extends Component
             ['userId','=',$user->id]])
         ->first();
 
+
         $this->galleries = Gallery::where([
             ['userId','=',$user->id]])
         ->get();
         
         $this->user = User::where('id', $user->id)->first();
-
-        $this->total_product = Product::where('userId','=',$this->userId)->count();
+        
+        $count = Product::where('userId','=',$this->userId)->count();
+        $this->total_product = (($count > 0 )? $count : 0);
     }
 
     public function render()

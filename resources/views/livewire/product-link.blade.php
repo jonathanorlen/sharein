@@ -55,7 +55,8 @@
                         </div>
                     </div>
                     <div class=" col-6">
-                        <img src="{{ asset('icons/trash-2.svg') }}"
+                        <img src="{{ asset('icons/trash-2.svg') }}" wire:click="setDelete({{ $item->id }})"
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                             wire:click="delete({{ $item->id }}, {{ $item->userId }}, {{ $item->order }})"
                             alt="menu" class="float-end">
                     </div>
@@ -63,19 +64,20 @@
             </li>
         @endforeach
     </ul>
-</div>   
-    @push('styles')
-        <style>
-            <style>.image-ratio {
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                width: 100%;
-                padding-top: 100%;
-                /* 1:1 Aspect Ratio */
-                position: relative;
-                /* If you want text inside of it */
-            }
+    @livewire('component.modal-delete')
+</div>
+@push('styles')
+    <style>
+        <style>.image-ratio {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            padding-top: 100%;
+            /* 1:1 Aspect Ratio */
+            position: relative;
+            /* If you want text inside of it */
+        }
 
-        </style>
-    @endpush
+    </style>
+@endpush

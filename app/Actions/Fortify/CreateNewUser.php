@@ -39,13 +39,14 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
-            'domain' => ['required', 'string', 'max:255','without_spaces', 'unique:users'],
+            'domain' => ['required', 'string', 'max:255','regex:/^\S*$/u', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
-        ])->validate();
+        ],['domain.regex' => 'Domain tidak boleh terdiri dari spasi'])->validate();
 
         return User::create([
+            'domain' => $input['domain'],
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),

@@ -2,7 +2,8 @@
     <div class="card p-4">
         <div class="row">
             <div class="col-md-4 offset-md-4">
-                <img src="{{ url('uploads/product/' . $old_image) }}" alt="" class="w-100">
+                <img src="@if ($image) {{ $image->temporaryUrl() }} @else {{ url('uploads/product/' . $old_image) }} @endif"
+                    alt="" class="w-100">
                 {{-- <div class="image-ratio rounded-top rounded-3"
                     style="background-image:url({{ url('uploads/product/' . $old_image) }})">
                 </div> --}}
@@ -54,18 +55,18 @@
         </button>
     </div>
 </div>
-    @push('styles')
-        <style>
-            <style>.image-ratio {
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                width: 100%;
-                padding-top: 100%;
-                /* 1:1 Aspect Ratio */
-                position: relative;
-                /* If you want text inside of it */
-            }
+@push('styles')
+    <style>
+        <style>.image-ratio {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            padding-top: 100%;
+            /* 1:1 Aspect Ratio */
+            position: relative;
+            /* If you want text inside of it */
+        }
 
-        </style>
-    @endpush
+    </style>
+@endpush

@@ -57,12 +57,13 @@
                     @endif
                     </div>
                 </div>
-                <div class="text-center mt-xxl">
-                    Tidak punya akun? 
-                    <a class="text-primary" href="{{ route('register') }}">{{ __('Daftar Gratis') }}
-                    </a>
-                </div>
             </form>
         </div>
     </x-jet-authentication-card>
+    
+    <div class="text-center">
+        Tidak punya akun? 
+        <a class="text-primary" href="{{ route('register') }}">{{ __('Daftar Gratis') }}
+        </a>
+    </div>
 </x-guest-layout>

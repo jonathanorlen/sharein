@@ -8,7 +8,11 @@ use App\Models\Product;
 
 class ProductLink extends Component
 {   
-    public $title, $price, $image, $links, $productId;
+    public $title, $price, $image, $links, $productId, $id_delete;
+
+    protected $listeners = ['refreshData' => '$refresh',
+                            'delete'];
+
     public function render()
     {   
         $this->links = Link::orderBy('order','asc')->where([['userId',auth()->id()],['productId',$this->productId]])->get();
@@ -62,5 +66,13 @@ class ProductLink extends Component
         $this->dispatchBrowserEvent("refreshIframe");
         // if($result->name != "" && $result->url != "" && $result->status == "active" ){
         // }
+    }
+
+    public function setDelete($id){
+        $this->id_delete = $id;
+    }
+    
+    public function delete(){
+        Link::find($this->id_delete)->delete();
     }
 }

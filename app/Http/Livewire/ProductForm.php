@@ -2,16 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\Master;
 use App\Models\Category;
 use App\Models\Product;
-use Livewire\WithFileUploads;
-use Str;
-use Storage;
 
-class ProductForm extends Component
+class ProductForm extends Master
 {   
-    use WithFileUploads;
 
     public $productId, $categories, $image, $title, $price, $category, $description, $old_image, $type = "create";
 
@@ -58,7 +54,7 @@ class ProductForm extends Component
 
     public function create(){
         $data = $this->validate();
-        $data['image'] = $this->upload();
+        $data['image'] = $this->uploadImageSquare($this->image, $this->old_image,'product');
         $data['categoryId'] = $data['category'];
         $data['userId'] = auth()->id();
         unset($data['category']);
@@ -72,7 +68,9 @@ class ProductForm extends Component
         $data = $this->validate();
         $product = Product::find($this->productId);
         if($this->image){
-            $data['image'] = $this->upload();
+            $data['image'] = $this->uploadImageSquare($this->image, $this->old_image,'product');
+        }else{
+            $data['image'] = $product->image;
         }
         $data['categoryId'] = $data['category'];
         unset($data['category']);
@@ -82,18 +80,18 @@ class ProductForm extends Component
         return redirect()->route('product');
     }
 
-    private function upload()
-    {
-        if($this->old_image && $this->image){
-            Storage::disk('product')->delete($this->old_image);
-        }
+    // private function upload()
+    // {
+    //     if($this->old_image && $this->image){
+    //         Storage::disk('product')->delete($this->old_image);
+    //     }
 
-        if($this->image){
-            $image_name = Str::random(30) . '.' . $this->image->getClientOriginalExtension();
-            // $this->image->move($path, $image_name);
-            $this->image->storeAs('/', $image_name, "product");
-            return $image_name;
-        }
+    //     if($this->image){
+    //         $image_name = Str::random(30) . '.' . $this->image->getClientOriginalExtension();
+    //         // $this->image->move($path, $image_name);
+    //         $this->image->storeAs('/', $image_name, "product");
+    //         return $image_name;
+    //     }
 
-    }
+    // }
 }

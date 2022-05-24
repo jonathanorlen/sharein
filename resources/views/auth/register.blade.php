@@ -85,12 +85,12 @@
                         </button>
                     </div>
                 </div>
-                <div class="text-center mt-xxl">
-                    Sudah memiliki akun? 
-                    <a class="text-primary" href="{{ route('login') }}">{{ __('Masuk') }}
-                    </a>
-                </div>
             </form>
         </div>
     </x-jet-authentication-card>
+    <div class="text-center mb-xxl">
+        Sudah memiliki akun? 
+        <a class="text-primary" href="{{ route('login') }}">{{ __('Masuk') }}
+        </a>
+    </div>
 </x-guest-layout>

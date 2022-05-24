@@ -32,15 +32,15 @@
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
   --bs-primary: #3490dc;
-  --bs-secondary: #6c757d;
+  --bs-secondary: #F34213;
   --bs-success: #38c172;
   --bs-info: #6cb2eb;
   --bs-warning: #ffed4a;
   --bs-danger: #e3342f;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
-  --bs-primary-rgb: 52, 144, 220;
-  --bs-secondary-rgb: 108, 117, 125;
+  --bs-primary-rgb: 7, 81, 216;
+  --bs-secondary-rgb: 243, 66, 19;
   --bs-success-rgb: 56, 193, 114;
   --bs-info-rgb: 108, 178, 235;
   --bs-warning-rgb: 255, 237, 74;
@@ -80,6 +80,7 @@
   --spacing-xl : 1.5rem;
   --spacing-xxl : 3rem;
   --spacing-xxxl : 4rem;
+  --spacing-xxxxl : 8rem;
 }
 
 *,
@@ -151,6 +152,9 @@
 }
 .mt-xxxl{
   margin-top: var(--spacing-xxxl) !important;
+}
+.mt-xxxxl{
+  margin-top: var(--spacing-xxxxl) !important;
 }
 
 .me-s{
@@ -249,6 +253,56 @@
   padding-bottom: var(--spacing-xxxl) !important;
 }
 
+.px-s{
+  padding-left: var(--spacing-s) !important;
+  padding-right: var(--spacing-s) !important;
+}
+.px-m{
+  padding-left: var(--spacing-m) !important;
+  padding-right: var(--spacing-m) !important;
+}
+.px-l{
+  padding-left: var(--spacing-l) !important;
+  padding-right: var(--spacing-l) !important;
+}
+.px-xl{
+  padding-left: var(--spacing-xl) !important;
+  padding-right: var(--spacing-xl) !important;
+}
+.px-xxl{
+  padding-left: var(--spacing-xxl) !important;
+  padding-right: var(--spacing-xxl) !important;
+}
+.px-xxxl{
+  padding-left: var(--spacing-xxxl) !important;
+  padding-right: var(--spacing-xxxl) !important;
+}
+
+.py-s{
+  padding-top: var(--spacing-s) !important;
+  padding-bottom: var(--spacing-s) !important;
+}
+.py-m{
+  padding-top: var(--spacing-m) !important;
+  padding-bottom: var(--spacing-m) !important;
+}
+.py-l{
+  padding-top: var(--spacing-l) !important;
+  padding-bottom: var(--spacing-l) !important;
+}
+.py-xl{
+  padding-top: var(--spacing-xl) !important;
+  padding-bottom: var(--spacing-xl) !important;
+}
+.py-xxl{
+  padding-top: var(--spacing-xxl) !important;
+  padding-bottom: var(--spacing-xxl) !important;
+}
+.py-xxxl{
+  padding-top: var(--spacing-xxxl) !important;
+  padding-bottom: var(--spacing-xxxl) !important;
+}
+
 .container.menu > .list-group {
   overflow-x: auto;
   white-space: nowrap;
@@ -281,6 +335,10 @@
 
 .rounded-s{
   border-radius: var(--spacing-s) !important;
+}
+
+.rounded-m{
+  border-radius: var(--spacing-m) !important;
 }
 
 .rounded-l{
@@ -364,10 +422,10 @@ hr:not([size]) {
 
 .text-l{
   font-family: Inter !important;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
   font-size: 16px !important;
   line-height: 24px !important;
-  letter-spacing: -1.1% !important;
+  letter-spacing: -0.011em;
 }
 
 .truncate-overflow {
@@ -389,7 +447,128 @@ hr:not([size]) {
 .translate-btn-image{
   transform : translate(-120%, 70%) !important;
 }
-.line-clamp {
+
+.updown{
+  animation:updown 5s ease infinite;
+}
+.downup{
+  animation:downup 5s ease infinite;
+}
+@keyframes updown {
+  0% {
+      transform: translateY(-30%);
+  }
+
+  50% {
+      transform: translateY(30%);
+  }
+
+  100% {
+      transform: translateY(-30%);
+  }
+}
+@keyframes downup {
+  0% {
+      transform: translateY(30%);
+  }
+
+  50% {
+      transform: translateY(-30%);
+  }
+
+  100% {
+      transform: translateY(30%);
+  }
+}
+
+.glowinput::before, .glowinput::after{
+  content: '';
+  border-radius: .5rem;
+  position: absolute;
+  left:0px;
+  top:0px;
+  background: linear-gradient(45deg, #FDD9D0, #f3a126, #FDD9D0, #FDD9D0, #f3a126, #FDD9D0);
+  background-size: 400%;
+  width: 100%;
+  height:  100%;
+  z-index: -1;
+  animation: glowanimate 14s linear infinite;
+}
+
+.glowinput::after{
+  filter: blur(30px);
+}
+
+@keyframes glowanimate{
+  0%{
+    background-position: 0 0;
+  }
+  /* 50%{
+    background-position: 400% 0;
+  } */
+  100%{
+    background-position: -400% 0;
+  }
+}
+
+.maps > iframe{
+  width:100% !important;
+  height:250px !important;
+}
+
+.custom-search {
+  position: relative;
+  width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.custom-search-input {
+  width: 460px;
+  height:70px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: .5rem;
+  padding: 10px 100px 10px 20px; 
+  line-height: 1;
+  box-sizing: border-box;
+  border: 2px solid #F34213;
+  outline: none;
+}
+.custom-search-botton {
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  right: 6px; 
+  font-size: 40px;
+  top: 6px;
+  border: 0px;
+  border-radius: 0 .5rem .5rem 0;
+  background: #F34213;
+  color: #fff;
+  outline: none;
+  margin: 0;
+  padding: 0 10px;
+  z-index: 2;
+}
+
+.welcome-phone{
+  width: 473.94px;
+  height: 959px;
+}
+
+@media (max-width: 576px){
+  .welcome-phone{
+    width: 95%;
+    height: auto;
+  }
+
+  .custom-search-input {
+    width: 100%;
+  }
+
+  .custom-search {
+    width: 100%;
+  }
 }
 
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
@@ -413,7 +592,7 @@ h2, .h2 {
 }
 @media (min-width: 1200px) {
   h2, .h2 {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
   }
 }
 
@@ -422,7 +601,7 @@ h3, .h3 {
 }
 @media (min-width: 1200px) {
   h3, .h3 {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 }
 
@@ -3362,18 +3541,18 @@ textarea.form-control-lg {
 
 .btn-secondary {
   color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #F34213;
+  border-color: #F34213;
 }
 .btn-secondary:hover {
   color: #fff;
-  background-color: #5c636a;
-  border-color: #565e64;
+  background-color: #F34213;
+  border-color: #F34213;
 }
 .btn-check:focus + .btn-secondary, .btn-secondary:focus {
   color: #fff;
-  background-color: #5c636a;
-  border-color: #565e64;
+  background-color: #F34213;
+  border-color: #F34213;
   box-shadow: 0 0 0 0.25rem rgba(130, 138, 145, 0.5);
 }
 .btn-check:checked + .btn-secondary, .btn-check:active + .btn-secondary, .btn-secondary:active, .btn-secondary.active, .show > .btn-secondary.dropdown-toggle {
@@ -11782,4 +11961,119 @@ textarea.form-control-lg {
 
 .small {
   font-size: 0.875rem !important;
+}
+
+
+/* ========== Landing Page ========== */
+
+.list-link:nth-child(3n) { 
+  display: none;
+}
+
+.smooth-transation{
+  transition: .4s;
+}
+
+.rotate-icon{
+  transform: rotate(180deg);
+}
+
+.image-ratio {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  padding-top: 100%;
+  /* 1:1 Aspect Ratio */
+  position: relative;
+  /* If you want text inside of it */
+}
+
+.btn-circle {
+  width: 40px;
+  height: 40px;
+  padding: 7px 0px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 24px;
+  line-height: 1.42857;
+  background-color:#0751D8;
+  color:#fff;
+}
+
+.btn-circle-color{
+  background-color:var(--landing-background-color);
+  color:var(--landing-color);
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  border-top: #FFFFFF;
+  border-right: #FFFFFF;
+  border-left: #FFFFFF;
+  background-color: transparent;
+  border-bottom: 3px solid var(--landing-background-color);
+  color: var(--landing-background-color);
+}
+
+.nav-tabs{
+  border-bottom: 0px solid black;
+}
+
+.nav-link:hover{
+  color: var(--landing-background-color);
+}
+
+.pswp img {
+  max-width: none;
+  object-fit: contain;
+}
+
+.btn-links{
+  transition: ease .2s; // when set on selector itself, will apply to all pseudo-classes such as: :hover, :active, :focus, etc.
+  -webkit-transition: ease .2s;
+}
+
+.btn-links:hover {
+  background-color:var(--landing-background-color);
+  color:var(--landing-color);
+  transition:transform 0.2s ease;
+  transform: scale(1.03); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.btn-color{
+  background-color:var(--landing-background-color);
+  color:var(--landing-color);
+}
+
+.text-color{
+  color:var(--landing-background-color);
+}
+
+.text-price-color{
+  color:var(--landing-background-color);
+}
+
+.btn-outline-color{
+ border-color:var(--landing-background-color);
+  color:var(--landing-background-color);
+}
+
+.btn-outline-color:hover{
+ border-color:var(--landing-background-color);
+ background-color:var(--landing-background-color);
+  color:var(--landing-color);
+}
+
+.btn-outline-color[type="radio"]:checked{
+ border-color:var(--landing-background-color);
+ background-color:var(--landing-background-color);
+  color:var(--landing-color);
+}
+
+.background-color{
+  background-color:var(--landing-background);
+}
+
+.morecontent span {
+	display: none;
 }

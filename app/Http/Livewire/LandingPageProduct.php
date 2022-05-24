@@ -16,15 +16,15 @@ use Carbon\Carbon;
 
 class LandingPageProduct extends Component
 {   
-    public $product, $userId, $userDomain, $links;
+    public $product, $userId, $userDomain, $links, $user;
     public function mount($domain,Product $product){
         $this->product = $product;
-        $user = User::where('domain', $domain)->first();
-        $this->userId = $user->id;
-        $this->userDomain = $user->domain;
+        $this->user = User::where('domain', $domain)->first();
+        $this->userId = $this->user->id;
+        $this->userDomain = $this->user->domain;
 
         $this->links = Link::where([
-            ['userId','=',$user->id],['status','=','active'],['name','!=',''],['url','!=',''],['productId',$product->id]])
+            ['userId','=',$this->user->id],['status','=','active'],['name','!=',''],['url','!=',''],['productId',$product->id]])
         ->orderBy('order','asc')
         ->get();
 

@@ -31,6 +31,12 @@ class User extends Authenticatable
         'profile_title',
         'bio',
         'about',
+        'address',
+        'maps',
+        'background_color',
+        'background',
+        'color',
+        'link_limit',
         'password',
     ];
 
