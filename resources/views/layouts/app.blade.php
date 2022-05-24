@@ -37,7 +37,7 @@
         <div class="row">
             {{ $slot }}
             <div class="col-md-6 d-md-flex align-items-center d-none">
-                <iframe src="http://127.0.0.1:8000/{{ auth()->user()->domain }}" title="description"
+                <iframe src="{{ url('/' . auth()->user()->domain) }}" title="description"
                     class="col-md-5 col-sm-7 mx-auto" style="height: 85%" id="frame"></iframe>
             </div>
         </div>
