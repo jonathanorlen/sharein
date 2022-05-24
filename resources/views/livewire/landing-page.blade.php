@@ -72,14 +72,17 @@
             @endif
             @if (!$galleries->isEmpty())
                 <li class="nav-item">
-                    <a class="nav-link" id="gallery-tab" data-bs-toggle="tab" href="#galeri" role="tab"
-                        aria-controls="galeri" aria-selected="false">Galeri</a>
+                    <a class="nav-link @if ($total_product < 0 && $links->isEmpty() && $banners->isEmpty()) ) active @endif" id="gallery-tab"
+                        data-bs-toggle="tab" href="#galeri" role="tab" aria-controls="galeri"
+                        aria-selected="false">Galeri</a>
                 </li>
             @endif
-            <li class="nav-item">
-                <a class="nav-link" id="tentang_kami-tab" data-bs-toggle="tab" href="#tentang_kami" role="tab"
-                    aria-controls="tentang_kami" aria-selected="false">Tentang Kami</a>
-            </li>
+            @if ($user->bio || $user->about || $user->maps)
+                <li class="nav-item">
+                    <a class="nav-link" id="tentang_kami-tab" data-bs-toggle="tab" href="#tentang_kami" role="tab"
+                        aria-controls="tentang_kami" aria-selected="false">Tentang Kami</a>
+                </li>
+            @endif
         </ul>
     </div>
     <div class="tab-content" id="myTabContent">
@@ -164,7 +167,8 @@
                 </div>
             @endif
         </div>
-        <div class="tab-pane container fade p-1 p-md-3" id="galeri" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="tab-pane container fade p-1 p-md-3 @if ($total_product < 0 && $links->isEmpty() && $banners->isEmpty()) ) show @endif " id="galeri"
+            role="tabpanel" aria-labelledby="profile-tab">
             <div class="row gx-2 gy-2 masonry-container" data-masonry='{"percentPosition": true }' id="my-gallery">
                 @foreach ($galleries as $item)
                     <a href="{{ asset('uploads/gallery/' . $item->image) }}" data-pswp-width="800"
