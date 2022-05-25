@@ -72,7 +72,7 @@
             @endif
             @if (!$galleries->isEmpty())
                 <li class="nav-item">
-                    <a class="nav-link @if ($total_product < 0 && $links->isEmpty() && $banners->isEmpty()) ) active @endif" id="gallery-tab"
+                    <a class="nav-link @if ($total_product <= 0 && $links->isEmpty() && $banners->isEmpty()) active @endif" id="gallery-tab"
                         data-bs-toggle="tab" href="#galeri" role="tab" aria-controls="galeri"
                         aria-selected="false">Galeri</a>
                 </li>
@@ -86,9 +86,9 @@
         </ul>
     </div>
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane container fade show active p-1 p-md-3" id="home" role="tabpanel"
-            aria-labelledby="home-tab">
-            <div class="mb-4">
+        <div class="tab-pane container fade @if ($total_product > 0 || !$links->isEmpty() || !$banners->isEmpty()) show active @endif p-1 p-md-3" id="home"
+            role="tabpanel" aria-labelledby="home-tab">
+            <div class="@if (!$banners->isEmpty()) mb-4 @endif">
                 <div class="owl-carousel owl-theme">
                     @foreach ($banners as $item)
                         <div>
@@ -121,26 +121,24 @@
                         wire:model="search">
                 </div>
                 @if ($categories->count() > 0)
-                    <div>
-                        <div class="menu container col-md-12 py-0 px-0">
-                            <ul class="list-group list-group-horizontal py-2">
+                    <div class="menu container col-md-12 py-0 px-0">
+                        <ul class="list-group list-group-horizontal py-0">
+                            <li class="list-group-item border-0 p-0 mx-0 bg-transparent">
+                                <input type="radio" class="btn-check" name="category" id="semua" autocomplete="off"
+                                    checked value="" wire:model="select_category">
+                                <label class="btn btn-outline-color pt-s pb-s rounded-pill text-m me-m"
+                                    for="semua">Semua</label>
+                            </li>
+                            @foreach ($categories as $item)
                                 <li class="list-group-item border-0 p-0 mx-0 bg-transparent">
-                                    <input type="radio" class="btn-check" name="category" id="semua"
-                                        autocomplete="off" checked value="" wire:model="select_category">
-                                    <label class="btn btn-outline-color pt-s pb-s rounded-pill text-m me-m"
-                                        for="semua">Semua</label>
+                                    <input type="radio" class="btn-check" name="category"
+                                        id="{{ $item->title . $item->order }}" value="{{ $item->id }}"
+                                        autocomplete="off" wire:model="select_category">
+                                    <label class=" btn btn-outline-color pt-s pb-s rounded-pill text-m me-m"
+                                        for="{{ $item->title . $item->order }}">{{ $item->title }}</label>
                                 </li>
-                                @foreach ($categories as $item)
-                                    <li class="list-group-item border-0 p-0 mx-0 bg-transparent">
-                                        <input type="radio" class="btn-check" name="category"
-                                            id="{{ $item->title . $item->order }}" value="{{ $item->id }}"
-                                            autocomplete="off" wire:model="select_category">
-                                        <label class=" btn btn-outline-color pt-s pb-s rounded-pill text-m me-m"
-                                            for="{{ $item->title . $item->order }}">{{ $item->title }}</label>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+                            @endforeach
+                        </ul>
                     </div>
                 @endif
                 <div class="row mt-l gx-3 gy-3">
@@ -151,10 +149,11 @@
                                 <div class="image-ratio rounded-top rounded-3"
                                     style="background-image:url({{ url('uploads/product/' . $item->image) }})">
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body p-2 p-sm-3">
                                     <div class="d-flex flex-column bd-highlight">
                                         <div class="">
-                                            <h3 class="truncate-overflow text-neutral-100">{{ $item->title }}</h3>
+                                            <h3 class="truncate-overflow text-neutral-100 product-title">
+                                                {{ $item->title }}</h3>
                                         </div>
                                         <div class="">
                                             <span class="text-m text-color">{{ format_rupiah($item->price) }}</span>
@@ -167,8 +166,8 @@
                 </div>
             @endif
         </div>
-        <div class="tab-pane container fade p-1 p-md-3 @if ($total_product < 0 && $links->isEmpty() && $banners->isEmpty()) ) show @endif " id="galeri"
-            role="tabpanel" aria-labelledby="profile-tab">
+        <div class="tab-pane container fade p-1 p-md-3 @if ($total_product <= 0 && $links->isEmpty() && $banners->isEmpty()) show active @endif"
+            id="galeri" role="tabpanel" aria-labelledby="profile-tab">
             <div class="row gx-2 gy-2 masonry-container" data-masonry='{"percentPosition": true }' id="my-gallery">
                 @foreach ($galleries as $item)
                     <a href="{{ asset('uploads/gallery/' . $item->image) }}" data-pswp-width="800"

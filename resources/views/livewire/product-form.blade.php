@@ -12,7 +12,7 @@
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Gambar</label>
             <input type="file" wire:model="image" class="form-control @error('image') is-invalid @enderror"
-                id="exampleFormControlInput1" placeholder="">
+                id="exampleFormControlInput1" placeholder="" wire:loading.attr="disabled" wire:target="create,update">
             @error('image')
                 <span class="text-danger error">{{ $message }}</span>
             @enderror
@@ -20,11 +20,12 @@
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Nama Produk</label>
             <input type="text" wire:model="title" class="form-control  @error('title') is-invalid @enderror"
-                id="exampleFormControlInput1" placeholder="">
+                id="exampleFormControlInput1" placeholder="" wire:loading.attr="disabled" wire:target="create,update">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Kategori</label>
-            <select wire:model="category" class="form-control  @error('category') is-invalid @enderror">
+            <select wire:model="category" class="form-control  @error('category') is-invalid @enderror"
+                wire:loading.attr="disabled" wire:target="create,update">
                 <option value="" hidden>Pilih Kategori</option>
                 @foreach ($categories as $item)
                     <option value="{{ $item->id }}">
@@ -39,12 +40,13 @@
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Harga</label>
             <input type="number" wire:model="price" class="form-control @error('price') is-invalid @enderror"
-                id="exampleFormControlInput1" placeholder="">
+                id="exampleFormControlInput1" placeholder="" wire:loading.attr="disabled" wire:target="create,update">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Deskripsi</label>
             <textarea wire:model="description" class="form-control @error('description') is-invalid @enderror"
-                id="exampleFormControlTextarea1" rows="3"></textarea>
+                id="exampleFormControlTextarea1" rows="3" wire:loading.attr="disabled"
+                wire:target="create,update"></textarea>
         </div>
         <button @if ($type != 'edit') wire:click="create"@else wire:click="update" @endif
             class="btn btn-primary btn-lg" type="button">Simpan

@@ -40,7 +40,7 @@ class ProductLink extends Component
             );
         }else{
             foreach ($this->links as $item) {
-                Link::find($item['id'])->update(['order' => $item['order']+1]);
+                Link::where('productId',$this->productId)->find($item['id'])->update(['order' => $item['order']+1]);
             }
     
             Link::create([
@@ -66,6 +66,14 @@ class ProductLink extends Component
         $this->dispatchBrowserEvent("refreshIframe");
         // if($result->name != "" && $result->url != "" && $result->status == "active" ){
         // }
+    }
+
+    public function updateLinkOrder($items){
+        foreach ($items as $item) {
+            Link::where('productId',$this->productId)->find($item['value'])->update(['order' => $item['order']]);
+        }
+        
+        $this->dispatchBrowserEvent("refreshIframe");
     }
 
     public function setDelete($id){

@@ -19,13 +19,13 @@ class Link extends Component
     }
     public function render()
     {   
-        $this->data = Links::orderBy('order','asc')->where('userId',auth()->id())->get();
+        $this->data = Links::orderBy('order','asc')->where([['userId',auth()->id()],['productId',NULL]])->get();
         return view('livewire.link');
     }
 
     public function updateLinkOrder($items){
         foreach ($items as $item) {
-            Links::find($item['value'])->update(['order' => $item['order']]);
+            Links::where('productId',NULL)->find($item['value'])->update(['order' => $item['order']]);
         }
         
         $this->dispatchBrowserEvent("refreshIframe");
@@ -42,7 +42,7 @@ class Link extends Component
             );
         }else{
             foreach ($this->data as $item) {
-                Links::find($item['id'])->update(['order' => $item['order']+1]);
+                Links::where('productId',NULL)->find($item['id'])->update(['order' => $item['order']+1]);
             }
     
             Links::create([
@@ -82,6 +82,6 @@ class Link extends Component
 
     public function delete(){
         Links::find($this->id_delete)->delete();
-        Links::where([['userId','=',$this->user_id_delete], ['order','>',$this->order_delete]])->decrement('order',1);
+        Links::where([['userId','=',$this->user_id_delete], ['order','>',$this->order_delete], ['productId',NULL]])->decrement('order',1);
     }
 }

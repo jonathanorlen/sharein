@@ -1,4 +1,4 @@
-<div class="col-md-6 pe-md-5 side-left">
+<div class="col-md-6 pe-md-5 pb-5 side-left">
     <div class="d-grid mb-xxl mt-xxl">
         <a class="btn btn-primary btn-lg text-white" href="{{ route('product.create') }}">Tambah
             Produk
@@ -19,16 +19,15 @@
                     <div class="card-body">
                         <div class="d-flex flex-column bd-highlight">
                             <div class="">
-                                <span class="h3 truncate-overflow ">{{ $item->title }}</span>
+                                <span class="h3 truncate-overflow product-title">{{ $item->title }}</span>
                             </div>
                             <div class="">
                                 <span class="text-m text-primary">{{ format_rupiah($item->price) }}</span>
                             </div>
                             <div class="mt-2">
                                 <img src="{{ asset('icons/trash-2.svg') }}"
-                                    wire:click="setDelete({{ $item->id }})"
-                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                    alt="menu" class="float-end">
+                                    wire:click="setDelete({{ $item->id }})" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop" alt="menu" class="float-end">
                                 <a href="{{ route('product.edit', $item->id) }}">
                                     <img src="{{ asset('icons/edit-3.svg') }}" alt="menu" class="float-end me-2">
                                 </a>
@@ -47,50 +46,50 @@
 
 
 @push('styles')
-<style>
-    .image-ratio {
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 100%;
-        padding-top: 100%;
-        /* 1:1 Aspect Ratio */
-        position: relative;
-        /* If you want text inside of it */
-    }
+    <style>
+        .image-ratio {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            padding-top: 100%;
+            /* 1:1 Aspect Ratio */
+            position: relative;
+            /* If you want text inside of it */
+        }
 
-    .draggable-mirror {
-        background-color: white !important;
-        width: 50%;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        list-style-type: none;
-    }
+        .draggable-mirror {
+            background-color: white !important;
+            width: 50%;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            list-style-type: none;
+        }
 
-    .side-left {
-        height: calc(100vh - 110px);
-        overflow-y: scroll;
-    }
+        .side-left {
+            height: calc(100vh - 110px);
+            overflow-y: scroll;
+        }
 
-    /* width */
-    ::-webkit-scrollbar {
-        width: 4px;
-        border-radius: 10px
-    }
+        /* width */
+        ::-webkit-scrollbar {
+            width: 4px;
+            border-radius: 10px
+        }
 
-    /* Track */
-    ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
 
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-        background: #888;
-    }
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
 
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
 
-</style>
+    </style>
 @endpush
