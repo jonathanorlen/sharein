@@ -1,6 +1,10 @@
 /node_modules
 /public/hot
 /public/storage
+/public/uploads/banner/*
+/public/uploads/nigalleryb/*
+/public/uploads/product/*
+/public/uploads/profile/*
 /storage/*.key
 /vendor
 .env
