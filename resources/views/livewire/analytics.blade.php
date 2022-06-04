@@ -93,68 +93,63 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts" defer data-turbolinks-track="reload"></script>
     <script>
         console.clear();
-        if (@json($visitor_number).length > 0) {
-            var options = {
-                chart: {
-                    type: 'line'
-                },
-                stroke: {
-                    curve: 'smooth',
-                },
-                series: [{
-                    name: 'Pengunjung',
-                    data: @json($visitor_number)
-                }],
-                xaxis: {
-                    categories: @json($visitor_date)
-                }
+        var options = {
+            chart: {
+                type: 'line'
+            },
+            stroke: {
+                curve: 'smooth',
+            },
+            series: [{
+                name: 'Pengunjung',
+                data: @json($visitor_number)
+            }],
+            xaxis: {
+                categories: @json($visitor_date)
             }
-            var chart = new ApexCharts(document.querySelector("#chart"), options);
-            chart.render();
         }
-        if (@json($link_number).length > 0) {
-            //chart click with bar
-            var options_click = {
-                chart: {
-                    type: 'bar'
-                },
-                stroke: {
-                    curve: 'smooth',
-                },
-                series: [{
-                    name: 'Pengunjung',
-                    data: @json($link_number)
-                }],
-                xaxis: {
-                    categories: @json($link_date)
-                }
-            }
-            var chart_click = new ApexCharts(document.querySelector("#chart_click"), options_click);
-            chart_click.render();
-        }
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
 
-        if (@json($social_count).length > 0) {
-            //chart for social media
-            var options_social = {
-                series: @json($social_count),
-                chart: {
-                    type: 'donut',
-                },
-                labels: @json($social),
-                responsive: [{
-                    breakpoint: 480,
-                    options: {
-                        chart: {
-                            width: 300
-                        },
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }]
-            };
-            var chart_social = new ApexCharts(document.querySelector("#chart_social"), options_social);
-            chart_social.render();
+        //chart click with bar
+        var options_click = {
+            chart: {
+                type: 'bar'
+            },
+            stroke: {
+                curve: 'smooth',
+            },
+            series: [{
+                name: 'Pengunjung',
+                data: @json($link_number)
+            }],
+            xaxis: {
+                categories: @json($link_date)
+            }
         }
+        var chart_click = new ApexCharts(document.querySelector("#chart_click"), options_click);
+        chart_click.render();
+
+        //chart for social media
+        var options_social = {
+            series: @json($social_count),
+            chart: {
+                type: 'donut',
+            },
+            labels: @json($social),
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 300
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+        var chart_social = new ApexCharts(document.querySelector("#chart_social"), options_social);
+        chart_social.render();
     </script>
 @endpush

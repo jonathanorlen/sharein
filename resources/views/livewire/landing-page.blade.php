@@ -95,7 +95,7 @@
                     <a href="{{ $item->url }}" target="_blank"
                         class="btn btn-links btn-color smooth-transation @if ($loop->iteration > $user->link_limit) d-none @else d-flex @endif align-items-center justify-content-center"
                         type="button" style="height: 50px" wire:click="addVisitor({{ $item->id }},'link')">
-                        {{ $item->name }}</a>
+                        {{ $item->title }}</a>
                 @endforeach
             </div>
             @if ($links->count() > $user->link_limit)

@@ -18,8 +18,8 @@
                         <div class="row">
                             <div class="col-12 mb-s">
                                 <label for="title-{{ $item->id }}" class="form-label d-none">Title Link</label>
-                                <input type="text" value="{{ $item->name }}"
-                                    wire:change="update($event.target.value, {{ $item->id }},{{ '"name"' }})"
+                                <input type="text" value="{{ $item->title }}"
+                                    wire:change="update($event.target.value, {{ $item->id }},{{ '"title"' }})"
                                     class="form-control border-0 bg-white p-0 shadow-none rounded-0 text-l"
                                     id="title-{{ $item->id }}" placeholder="Title">
                             </div>

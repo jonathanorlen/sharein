@@ -14,7 +14,7 @@
         @foreach ($links as $item)
             <a href="{{ $item->url }}" target="_blank"
                 class="btn btn-links btn-color d-flex align-items-center justify-content-center" type="button"
-                style="height: 50px" wire:click="addVisitor({{ $item->id }},'link')">{{ $item->name }}</a>
+                style="height: 50px" wire:click="addVisitor({{ $item->id }},'link')">{{ $item->title }}</a>
         @endforeach
     </div>
     <button class="btn btn-transparent position-absolute top-0 end-0 mt-2 me-2 mt-md-4 me-md-4 p-2" id="share-button"

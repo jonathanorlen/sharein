@@ -24,7 +24,7 @@ class LandingPageProduct extends Component
         $this->userDomain = $this->user->domain;
 
         $this->links = Link::where([
-            ['userId','=',$this->user->id],['status','=','active'],['name','!=',''],['url','!=',''],['productId',$product->id]])
+            ['userId','=',$this->user->id],['status','=','active'],['title','!=',''],['url','!=',''],['productId',$product->id]])
         ->orderBy('order','asc')
         ->get();
 
