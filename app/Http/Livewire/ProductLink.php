@@ -8,14 +8,14 @@ use App\Models\Product;
 
 class ProductLink extends Component
 {   
-    public $title, $price, $image, $links, $productId, $id_delete;
+    public $title, $price, $image, $data, $productId, $id_delete;
 
     protected $listeners = ['refreshData' => '$refresh',
                             'delete'];
 
     public function render()
     {   
-        $this->links = Link::orderBy('order','asc')->where([['userId',auth()->id()],['productId',$this->productId]])->get();
+        $this->data = Link::orderBy('order','asc')->where([['userId',auth()->id()],['productId',$this->productId]])->get();
         
         return view('livewire.product-link')->layout('layouts.app2');
     }
@@ -30,7 +30,7 @@ class ProductLink extends Component
     }
 
     public function create(){
-        if($this->links->count() > 10){
+        if($this->data->count() > 10){
             $this->dispatchBrowserEvent("toast",
                 [
                     'header' => 'Perhatian!',
@@ -39,7 +39,7 @@ class ProductLink extends Component
                 ]
             );
         }else{
-            foreach ($this->links as $item) {
+            foreach ($this->data as $item) {
                 Link::where('productId',$this->productId)->find($item['id'])->update(['order' => $item['order']+1]);
             }
     
@@ -61,19 +61,12 @@ class ProductLink extends Component
 
         $result = Link::find($id);
         $result->update([$type => $value]);
-
-
-        $this->dispatchBrowserEvent("refreshIframe");
-        // if($result->name != "" && $result->url != "" && $result->status == "active" ){
-        // }
     }
 
     public function updateLinkOrder($items){
         foreach ($items as $item) {
             Link::where('productId',$this->productId)->find($item['value'])->update(['order' => $item['order']]);
         }
-        
-        $this->dispatchBrowserEvent("refreshIframe");
     }
 
     public function setDelete($id){

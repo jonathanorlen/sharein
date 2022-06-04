@@ -27,12 +27,11 @@
                                     id="title-{{ $item->id }}" placeholder="Title">
                             </div>
                         </div> --}}
-                        <img src="{{ asset('icons/eye.svg') }}"
-                            alt="menu" class="float-end me-2">
+                        {{-- <img src="{{ asset('icons/eye.svg') }}"
+                            alt="menu" class="float-end me-2"> --}}
                         <img src="{{ asset('icons/trash-2.svg') }}"
                             wire:click="setDelete({{ $item->id }}, {{ $item->userId }}, {{ $item->order }})"
-                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                            alt="menu" class="float-end me-4">
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop" alt="menu" class="float-end me-4">
                         <img src="{{ asset('icons/menu.svg') }}" wire:sortable.handle alt="menu"
                             class="float-end" wire:sortable.handle>
                     </div>

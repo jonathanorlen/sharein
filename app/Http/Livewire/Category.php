@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Category as Data;
+use App\Models\Product;
 
 class Category extends Component
 {   
@@ -70,6 +71,7 @@ class Category extends Component
     }
 
     public function delete(){
+        Product::where([['userId',auth()->id()],['categoryId',$this->id_delete]])->update(['categoryId' => NULL]);
         Data::find($this->id_delete)->delete();
         Data::where([['userId','=',$this->user_id_delete], ['order','>',$this->order_delete]])->decrement('order',1);
     }

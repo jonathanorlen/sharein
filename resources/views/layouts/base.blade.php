@@ -2,14 +2,29 @@
 
 <head>
     <meta charset="utf-8">
+    <title>{{ $data['profile_title'] }} | ShareIn </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @if ($data['seo_title'])
+        <meta name="og:title" property="og:title" content="{{ $data['seo_title'] }}">
+    @endif
+    @if ($data['seo_description'])
+        <meta name="description" content="{{ $data['seo_description'] }}">
+    @endif
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{ asset('plugin/owlcarousel/css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('plugin/owlcarousel/css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugin/photoswipe/photoswipe.css') }}">
-    @stack('style')
     @livewireStyles
+    <style>
+        :root {
+            --landing-background-color: {{ $data['background_color'] }};
+            --landing-color: {{ $data['color'] }};
+            --landing-background: {{ $data['background'] }};
+        }
+
+    </style>
+    @stack('style')
 </head>
 
 <body class="background-color">
@@ -51,8 +66,8 @@
         });
         lightbox.init();
 
-        const button = document.querySelector('#share-button');
-        button.addEventListener('click', () => {
+        const share_button = document.querySelector('#share-button');
+        share_button.addEventListener('click', () => {
             const URL = window.location.href.slice(7);
 
             navigator.clipboard.writeText(URL);
@@ -100,6 +115,35 @@
     @livewireScripts
 
     @stack('script')
+
+    <!-- Meta Pixel Code -->
+    @if ($data['facebook_pixel_id'])
+        <script>
+            ! function(f, b, e, v, n, t, s) {
+                if (f.fbq) return;
+                n = f.fbq = function() {
+                    n.callMethod ?
+                        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                };
+                if (!f._fbq) f._fbq = n;
+                n.push = n;
+                n.loaded = !0;
+                n.version = '2.0';
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = !0;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s)
+            }(window, document, 'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '{{ $data['facebook_pixel_id'] }}');
+            fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+                src="https://www.facebook.com/tr?id={{ $data['facebook_pixel_id'] }}&ev=PageView&noscript=1" /></noscript>
+    @endif
+    <!-- End Meta Pixel Code -->
 </body>
 
 </html>

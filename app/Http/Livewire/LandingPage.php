@@ -76,7 +76,17 @@ class LandingPage extends Component
             $this->addVisitor($this->userId,"landing page");
         }
 
-        return view('livewire.landing-page')->layout('layouts.base');
+        $data = [
+            'profile_title' => $this->user->profile_title,
+            'seo_title' => $this->user->seo_title,
+            'seo_description' => $this->user->seo_description,
+            'facebook_pixel_id' => $this->user->facebook_pixel_id,
+            'background_color' => $this->user->background_color,
+            'color' => $this->user->color,
+            'background' => $this->user->background,
+        ];
+
+        return view('livewire.landing-page')->layout('layouts.base', ['data' => $data]);
     }
 
     public function addVisitor($itemId, $type){

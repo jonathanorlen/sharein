@@ -21,7 +21,7 @@
             </li>
             <li class="list-group-item border-0 py-2 ps-0 pr-2 mx-0">
                 <a class="list-group-item border-0 py-0 ps-0 pr-0 mx-0 {{ request()->is('panel/website/product*') ? 'active' : '' }}"
-                    href="{{ route('product') }}">
+                    href="{{ route('product') }}" data-turbolinks-action="replace">
                     Produk
                 </a>
             </li>
@@ -38,9 +38,20 @@
                 </a>
             </li>
             <li class="list-group-item border-0 py-2 ps-0 pr-2 mx-0">
-                <a class="list-group-item border-0 py-0 ps-0 pr-0 mx-0 {{ request()->is('panel/website/setting*') ? 'active' : '' }}" href="{{ route('setting') }}">
+                <a class="list-group-item border-0 py-0 ps-0 pr-0 mx-0 {{ request()->is('panel/website/setting*') ? 'active' : '' }}"
+                    href="{{ route('setting') }}">
                     Pengaturan
                 </a>
+            </li>
+            <li class="list-group-item border-0 ms-auto">
+                <div class="list-group-item border-0 py-0 ps-0 pr-0 mx-0">
+                    <b> ShareIn : </b>
+                    <span class="text-neutral-80">
+                        {{ url('/' . auth()->user()->domain) }}
+                    </span>
+                    {{-- <button class="btn p-0 m-0" id="share-button" onclick="toastSuccess()"></button> --}}
+                    <i class='bx bx-copy-alt h3 p-0 m-0' style="margin-bottom: -20px"></i>
+                </div>
             </li>
         </ul>
     </div>

@@ -14,54 +14,45 @@
             @if (@$social_media->whatsapp)
                 <a href="http://wa.me/62{{ $social_media->whatsapp }}" target="_blank"
                     class="btn btn-circle btn-circle-color btn-links"
-                    wire:click="addVisitor({{ $userId }},'social:whatsapp')"><i class="bx bxl-whatsapp"
-                        style=""></i></a>
+                    wire:click="addVisitor({{ $userId }},'social:whatsapp')"><i class="bx bxl-whatsapp"></i></a>
             @endif
             @if (@$social_media->instagram)
                 <a href="https://instagram.com/{{ $social_media->instagram }}" target="_blank"
                     class="btn btn-circle btn-circle-color btn-links" target="_blank"
-                    wire:click="addVisitor({{ $userId }},'social:instagram')"><i class="bx bxl-instagram"
-                        style=""></i></a>
+                    wire:click="addVisitor({{ $userId }},'social:instagram')"><i class="bx bxl-instagram"></i></a>
             @endif
             @if (@$social_media->tiktok)
                 <a href="https://www.tiktok.com/@{{ $social_media - > tiktok }}" target="_blank"
                     class="btn btn-circle btn-circle-color btn-links" target="_blank"
-                    wire:click="addVisitor({{ $userId }},'social:tiktok')"><i class="bx bxl-tiktok"
-                        style=""></i></a>
+                    wire:click="addVisitor({{ $userId }},'social:tiktok')"><i class="bx bxl-tiktok"></i></a>
             @endif
             @if (@$social_media->twitter)
                 <a href="https://www.twitter.com/{{ $social_media->twitter }}" target="_blank"
                     class="btn btn-circle btn-circle-color btn-links" target="_blank"
-                    wire:click="addVisitor({{ $userId }},'social:twitter')"><i class="bx bxl-twitter"
-                        style=""></i></a>
+                    wire:click="addVisitor({{ $userId }},'social:twitter')"><i class="bx bxl-twitter"></i></a>
             @endif
             @if (@$social_media->email)
                 <a href="mailto:{{ $social_media->email }}" target="_blank"
                     class="btn btn-circle btn-circle-color btn-links" target="_blank"
-                    wire:click="addVisitor({{ $userId }},'social:email')"><i class="bx bx-envelope"
-                        style=""></i></a>
+                    wire:click="addVisitor({{ $userId }},'social:email')"><i class="bx bx-envelope"></i></a>
             @endif
             @if (@$social_media->facebook)
                 <a href="https://facebook.com/{{ $social_media->facebook }}" target="_blank"
                     class="btn btn-circle btn-circle-color btn-links" target="_blank"
-                    wire:click="addVisitor({{ $userId }},'social:facebook')"><i class="bx bxl-facebook"
-                        style=""></i></a>
+                    wire:click="addVisitor({{ $userId }},'social:facebook')"><i class="bx bxl-facebook"></i></a>
             @endif
             @if (@$social_media->telegram)
                 <a href="https://t.me/{{ $social_media->telegram }}"
                     class="btn btn-circle btn-circle-color btn-links" target="_blank"
-                    wire:click="addVisitor({{ $userId }},'social:telegram')"><i class="bx bxl-telegram"
-                        style=""></i></a>
+                    wire:click="addVisitor({{ $userId }},'social:telegram')"><i class="bx bxl-telegram"></i></a>
             @endif
             @if (@$social_media->youtube)
                 <a href="https://www.youtube.com/c/{{ $social_media->youtube }}"
                     class="btn btn-circle btn-circle-color btn-links" target="_blank"
-                    wire:click="addVisitor({{ $userId }},'social:youtube')"><i class="bx bxl-youtube"
-                        style=""></i></a>
+                    wire:click="addVisitor({{ $userId }},'social:youtube')"><i class="bx bxl-youtube"></i></a>
             @endif
         </div>
     </div>
-    {{-- <div style="overflow-x: auto"> --}}
     <div>
         <ul class="nav nav-tabs mb-3 d-flex justify-content-center flex-nowrap" id="myTab" role="tablist">
             @if ($total_product > 0 || !$links->isEmpty() || !$banners->isEmpty())
@@ -124,14 +115,14 @@
                     <div class="menu container col-md-12 py-0 px-0">
                         <ul class="list-group list-group-horizontal py-0">
                             <li class="list-group-item border-0 p-0 mx-0 bg-transparent">
-                                <input type="radio" class="btn-check" name="category" id="semua" autocomplete="off"
-                                    checked value="" wire:model="select_category">
+                                <input type="radio" class="btn-check btn-check-color" name="category" id="semua"
+                                    autocomplete="off" value="" wire:model="select_category" checked>
                                 <label class="btn btn-outline-color pt-s pb-s rounded-pill text-m me-m"
                                     for="semua">Semua</label>
                             </li>
                             @foreach ($categories as $item)
                                 <li class="list-group-item border-0 p-0 mx-0 bg-transparent">
-                                    <input type="radio" class="btn-check" name="category"
+                                    <input type="radio" class="btn-check btn-check-color" name="category"
                                         id="{{ $item->title . $item->order }}" value="{{ $item->id }}"
                                         autocomplete="off" wire:model="select_category">
                                     <label class=" btn btn-outline-color pt-s pb-s rounded-pill text-m me-m"
@@ -146,9 +137,12 @@
                         <a href="{{ route('landing_page_product', [$userDomain, $item->id]) }}"
                             class="col-6 text-decoration-none">
                             <div class="card rounded-3">
-                                <div class="image-ratio rounded-top rounded-3"
-                                    style="background-image:url({{ url('uploads/product/' . $item->image) }})">
-                                </div>
+                                {{-- <div class="image-ratio rounded-top rounded-3"
+                                    style="background-image:url({{ url('uploads/product/' . $item->image) }})"
+                                    alt="{{ $item->title }}">
+                                </div> --}}
+                                <img src="{{ url('uploads/product/' . $item->image) }}" alt="{{ $item->title }}"
+                                    class="w-100">
                                 <div class="card-body p-2 p-sm-3">
                                     <div class="d-flex flex-column bd-highlight">
                                         <div class="">
@@ -190,18 +184,8 @@
         </div>
     </div>
     <button class="btn btn-transparent position-absolute top-0 end-0 mt-2 me-2 mt-md-4 me-md-4 p-2" id="share-button"
-        onclick="toastSuccess()"><i class="bx bx-share-alt fs-4" style=""></i></button>
+        onclick="toastSuccess()"><i class="bx bx-share-alt></i></button>
 </div>
-@push('style')
-    <style>
-        :root {
-            --landing-background-color: {{ $user->background_color }};
-            --landing-color: {{ $user->color }};
-            --landing-background: {{ $user->background ?: '#FFFFFF' }};
-        }
-
-    </style>
-@endpush
 @push('script')
     <script>
         const showLink = () => {

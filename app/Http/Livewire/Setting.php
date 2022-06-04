@@ -37,6 +37,9 @@ class Setting extends Master
         $this->background_color = $user->background_color ?: "#0751D8";
         $this->color = $user->color ?: "#ffffff";
         $this->background = $user->background ?: "#ffffff";
+        $this->seo_title = $user->seo_title;
+        $this->seo_description = $user->seo_description;
+        $this->facebook_pixel_id = $user->facebook_pixel_id;
     }
 
     public function updated($propertyName)

@@ -12,8 +12,9 @@
                         style="background-image:url('{{ url('uploads/gallery/' . $item->image) }}') !important">
                         <div style="width: 40px; height:40px; background-color:#fff; border-radius:100px; bottom: 0% !important;"
                             class="d-flex aligns-items-center justify-content-center position-absolute end-0 translate-middle">
-                            <img src="{{ asset('icons/trash-2.svg') }}" alt="menu" style="width: 24px" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                            wire:click="setDelete({{ $item->id }})">
+                            <img src="{{ asset('icons/trash-2.svg') }}" alt="menu" style="width: 24px"
+                                data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                wire:click="setDelete({{ $item->id }})">
                         </div>
                         {{-- <div style="width: 40px; height:40px; background-color:#fff; border-radius:100px; bottom: -1% !important; right: 48px"
                             class="d-flex aligns-items-center justify-content-center position-absolute translate-middle">
@@ -45,9 +46,9 @@
     <div class="modal fade" id="galleryFormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         @livewire('gallery-form')
-
     </div>
     @livewire('component.modal-delete')
+    <div class="mt-5"></div>
 
 </div>
 

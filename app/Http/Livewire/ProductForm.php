@@ -9,7 +9,7 @@ use App\Models\Product;
 class ProductForm extends Master
 {   
 
-    public $productId, $categories, $image, $title, $price, $category, $description, $old_image, $type = "create";
+    public $productId, $categories, $image, $title, $price, $category, $description, $old_image, $type = "create", $seo_title, $seo_description, $facebook_pixel_id;
 
     public function render()
     {   
@@ -35,13 +35,16 @@ class ProductForm extends Master
             'price' => 'required',
             'title' => 'required|max:100',
             'description' => 'required',
-            'image' => 'required|mimes:jpg,jpeg|max:2048',
+            'image' => 'required|mimes:jpg,jpeg,png|max:2048',
+            'seo_title' => 'nullable',
+            'seo_description' => 'nullable',
+            'facebook_pixel_id' => 'nullable|numeric',
         ];
 
         if($this->old_image){
-            $rules['image'] = 'nullable|mimes:jpg,jpeg|max:2048';
+            $rules['image'] = 'nullable|mimes:jpg,jpeg,png|max:2048';
         }else{
-            $rules['image'] = 'required|mimes:jpg,jpeg|max:2048';
+            $rules['image'] = 'required|mimes:jpg,jpeg,png|max:2048';
         }
 
         return $rules;

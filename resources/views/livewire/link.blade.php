@@ -1,11 +1,11 @@
-<div class="col-md-6 pe-md-5 side-left" wire:sortable-group.handle>
+<div class="col-md-6 pe-md-5 side-left">
     <div class="d-grid mb-xxl mt-xxl">
         <button class="btn btn-primary btn-lg text-white" type="button" wire:loading.attr="disabled" wire:target="create"
             wire:click="create">Tambah
             Link
             <div class="spinner-border text-light spinner-border-sm ms-2" role="status" wire:loading
                 wire:target="create">
-                <span class="sr-only">Loading...</span>
+                <span class="sr-only"></span>
             </div>
         </button>
     </div>
@@ -17,17 +17,19 @@
                     <div class="col-10">
                         <div class="row">
                             <div class="col-12 mb-s">
+                                <label for="title-{{ $item->id }}" class="form-label d-none">Title Link</label>
                                 <input type="text" value="{{ $item->name }}"
                                     wire:change="update($event.target.value, {{ $item->id }},{{ '"name"' }})"
                                     class="form-control border-0 bg-white p-0 shadow-none rounded-0 text-l"
                                     id="title-{{ $item->id }}" placeholder="Title">
                             </div>
                             <div class="col-12">
+                                <label for="urk-{{ $item->id }}" class="form-label d-none">Link</label>
                                 <input type="text" value="{{ $item->url }}"
                                     wire:change="update($event.target.value, {{ $item->id }},{{ '"url"' }})"
                                     class="form-control link border-0 bg-white p-0 shadow-none rounded-0 text-s"
-                                    id="title-{{ $item->id }}" placeholder="Url">
-                                @error('url_'.$item->id)
+                                    id="urk-{{ $item->id }}" placeholder="Url">
+                                @error('url_' . $item->id)
                                     <span class="text-danger error">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -49,8 +51,8 @@
                         </div>
                     </div>
                     <div class=" col-6">
-                        <img src="{{ asset('icons/trash-2.svg') }}"
-                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                        <img src="{{ asset('icons/trash-2.svg') }}" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop"
                             wire:click="setDelete({{ $item->id }}, {{ $item->userId }}, {{ $item->order }})"
                             alt="menu" class="float-end">
                     </div>
@@ -60,42 +62,47 @@
     </ul>
     <div class="mt-5"></div>
     @livewire('component.modal-delete')
-    @push('styles')
-        <style>
-            .draggable-mirror {
-                background-color: white !important;
-                width: 50%;
-                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-                list-style-type: none;
-            }
-
-            .side-left {
-                /* height: 100%; */
-                height: calc(100vh - 140px);
-                overflow-y: scroll;
-            }
-
-            /* width */
-            ::-webkit-scrollbar {
-                width: 4px;
-                border-radius: 10px
-            }
-
-            /* Track */
-            ::-webkit-scrollbar-track {
-                background: #f1f1f1;
-            }
-
-            /* Handle */
-            ::-webkit-scrollbar-thumb {
-                background: #888;
-            }
-
-            /* Handle on hover */
-            ::-webkit-scrollbar-thumb:hover {
-                background: #555;
-            }
-
-        </style>
-    @endpush
 </div>
+@push('scripts')
+    <script>
+        console.clear();
+    </script>
+@endpush
+@push('styles')
+    <style>
+        .draggable-mirror {
+            background-color: white !important;
+            width: 50%;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            list-style-type: none;
+        }
+
+        .side-left {
+            /* height: 100%; */
+            height: calc(100vh - 140px);
+            overflow-y: scroll;
+        }
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 4px;
+            border-radius: 10px
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+    </style>
+@endpush

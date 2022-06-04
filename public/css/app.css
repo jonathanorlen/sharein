@@ -3501,7 +3501,7 @@ textarea.form-control-lg {
 }
 .btn-check:focus + .btn, .btn:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(52, 144, 220, 0.25);
+  /* box-shadow: 0 0 0 0.25rem rgba(52, 144, 220, 0.25); */
 }
 .btn:disabled, .btn.disabled, fieldset:disabled .btn {
   pointer-events: none;
@@ -12061,13 +12061,7 @@ textarea.form-control-lg {
   color:var(--landing-background-color);
 }
 
-.btn-outline-color:hover{
- border-color:var(--landing-background-color);
- background-color:var(--landing-background-color);
-  color:var(--landing-color);
-}
-
-.btn-outline-color[type="radio"]:checked{
+.btn-check-color:checked+.btn-outline-color,.btn-outline-color:hover{
  border-color:var(--landing-background-color);
  background-color:var(--landing-background-color);
   color:var(--landing-color);
@@ -12091,4 +12085,8 @@ textarea.form-control-lg {
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
+}
+
+.owl-dot.active span {
+  background: var(--landing-background-color) !important;
 }

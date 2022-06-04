@@ -2,7 +2,7 @@
     <div class="row mt-5 mb-5 pb-3">
         <div class="col-md-12">
             <div class="card p-4 border-neutral-20 border">
-                <div class="mb-3 container">
+                <div class="mb-4 container">
                     <div class="row d-flex align-items-center">
                         <div class="col-12 col-md-6 col-xxl-6 position-relative mx-auto">
                             <img src="@if ($old_profile_picture) {{ asset('uploads/profile/' . $old_profile_picture) }}  @else {{ asset('attribute/image/placeholder-image.jpg') }} @endif"
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="exampleFormControlInput1" class="form-label">Profile Title</label>
                     <input type="text" wire:change="update($event.target.value,{{ '"profile_title"' }})"
                         wire:model="profile_title" class="form-control @error('profile_title') is-invalid @enderror"
@@ -27,7 +27,7 @@
                         <span class="text-danger error">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="exampleFormControlInput1" class="form-label">Bio</label>
                     <textarea name="" wire:change="update($event.target.value,{{ '"bio"' }})" id="" cols="30" rows="3"
                         wire:model="bio" class="form-control @error('bio') is-invalid @enderror"></textarea>
@@ -36,8 +36,9 @@
                     @enderror
                 </div>
             </div>
-            <div class="card p-4 border-neutral-20 border mt-l">
-                <div class="mb-3">
+            <div class="mt-xxl h3 text-neutral-90 fw-bold">Tentang Bisnis</div>
+            <div class="card p-4 border-neutral-20 border mt-1">
+                <div class="mb-4">
                     <label for="exampleFormControlInput1" class="form-label">Tentang Bisnis Anda</label>
                     <textarea name="" maxlength="200" wire:change="update($event.target.value,{{ '"about"' }})" id="" cols="30" rows="3"
                         wire:model="about" class="form-control @error('about') is-invalid @enderror"></textarea>
@@ -45,7 +46,7 @@
                         <span class="text-danger error">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="exampleFormControlInput1" class="form-label">Alamat bisnis</label>
                     <textarea name="" wire:change="update($event.target.value,{{ '"address"' }})" id="" cols="30" rows="3"
                         wire:model="address" class="form-control @error('address') is-invalid @enderror"></textarea>
@@ -53,7 +54,7 @@
                         <span class="text-danger error">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="exampleFormControlInput1" class="form-label">Google Map Link</label>
                     <textarea name="" wire:change="update($event.target.value,{{ '"maps"' }})" id="" cols="30" rows="3"
                         wire:model="maps" class="form-control @error('maps') is-invalid @enderror"></textarea>
@@ -62,10 +63,11 @@
                     @enderror
                 </div>
             </div>
-            <div class="card p-4 border-neutral-20 border mt-l">
+            <div class="mt-xxl h3 text-neutral-90 fw-bold">Warna</div>
+            <div class="card p-4 border-neutral-20 border mt-1">
                 <button class="btn mb-l btn-lg"
                     style="background-color:{{ $background_color }};color: {{ $color }}">Tombol</button>
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="exampleFormControlInput1" class="form-label">Warna Tombol</label>
                     <input type="color" name="" id="" class="form-control" wire:model="background_color"
                         wire:change="update($event.target.value,{{ '"background_color"' }})">
@@ -73,7 +75,7 @@
                         <span class="text-danger error">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="exampleFormControlInput1" class="form-label">Warna Font</label>
                     <input type="color" name="" id="" class="form-control" wire:model="color"
                         wire:change="update($event.target.value,{{ '"color"' }})">
@@ -81,7 +83,7 @@
                         <span class="text-danger error">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="exampleFormControlInput1" class="form-label">Warna Background</label>
                     <input type="color" name="" id="" class="form-control" wire:model="background"
                         wire:change="update($event.target.value,{{ '"background"' }})">
@@ -90,8 +92,9 @@
                     @enderror
                 </div>
             </div>
-            <div class="card p-4 border-neutral-20 border mt-l">
-                <div class="mb-3">
+            <div class="mt-xxl h3 text-neutral-90 fw-bold">Link</div>
+            <div class="card p-4 border-neutral-20 border mt-1">
+                <div class="mb-4">
                     <label for="exampleFormControlInput1" class="form-label">Jumlah Link Utama</label>
                     <select name="" id="" class="form-control" wire:model="link_limit"
                         wire:change="update($event.target.value,{{ '"link_limit"' }})">
@@ -99,60 +102,95 @@
                         <option value="4">4 Link</option>
                         <option value="5">5 Link</option>
                         <option value="6">6 Link</option>
+                        <option value="7">7 Link</option>
+                        <option value="8">8 Link</option>
+                        <option value="9">9 Link</option>
+                        <option value="10">10 Link</option>
                     </select>
                     @error('link_limit')
                         <span class="text-danger error">{{ $message }}</span>
                     @enderror
                 </div>
             </div>
+            <div class="mt-xxl h3 text-neutral-90 fw-bold">SEO</div>
+            <div class="card p-4 border-neutral-20 border mt-1">
+                <div class="mb-4">
+                    <label for="exampleFormControlInput1" class="form-label">Title</label>
+                    <input type="text" name="" id="" class="form-control" wire:model="seo_title"
+                        wire:change="update($event.target.value,{{ '"seo_title"' }})">
+                    @error('seo_title')
+                        <span class="text-danger error">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="mb-4">
+                    <label for="exampleFormControlInput1" class="form-label">Deskripsi</label>
+                    <input type="text" id="seo_description" class="form-control" wire:model="seo_description"
+                        wire:change="update($event.target.value,{{ '"seo_description"' }})">
+                    @error('seo_description')
+                        <span class="text-danger error">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <div class="mt-xxl h3 text-neutral-90 fw-bold">Analitik</div>
+            <div class="card p-4 border-neutral-20 border mt-1">
+                <div class="mb-4">
+                    <label for="exampleFormControlInput1" class="form-label">Facebook Pixel ID</label>
+                    <input type="text" name="" id="" class="form-control" wire:model="facebook_pixel_id"
+                        wire:change="update($event.target.value,{{ '"facebook_pixel_id"' }})">
+                    @error('facebook_pixel_id')
+                        <span class="text-danger error">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
         </div>
     </div>
-    @push('styles')
-        <style>
-            .image-ratio {
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                width: 100%;
-                padding-top: 100%;
-                /* 1:1 Aspect Ratio */
-                position: relative;
-                /* If you want text inside of it */
-            }
-
-            .draggable-mirror {
-                background-color: white !important;
-                width: 50%;
-                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-                list-style-type: none;
-            }
-
-            .side-left {
-                height: calc(100vh - 110px);
-                overflow-y: scroll;
-            }
-
-            /* width */
-            ::-webkit-scrollbar {
-                width: 4px;
-                border-radius: 10px
-            }
-
-            /* Track */
-            ::-webkit-scrollbar-track {
-                background: #f1f1f1;
-            }
-
-            /* Handle */
-            ::-webkit-scrollbar-thumb {
-                background: #888;
-            }
-
-            /* Handle on hover */
-            ::-webkit-scrollbar-thumb:hover {
-                background: #555;
-            }
-
-        </style>
-    @endpush
 </div>
+
+@push('styles')
+    <style>
+        .image-ratio {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            padding-top: 100%;
+            /* 1:1 Aspect Ratio */
+            position: relative;
+            /* If you want text inside of it */
+        }
+
+        .draggable-mirror {
+            background-color: white !important;
+            width: 50%;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            list-style-type: none;
+        }
+
+        .side-left {
+            height: calc(100vh - 110px);
+            overflow-y: scroll;
+        }
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 4px;
+            border-radius: 10px
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+    </style>
+@endpush

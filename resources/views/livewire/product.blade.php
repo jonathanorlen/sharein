@@ -10,8 +10,35 @@
     </div>
 
     <div class="row gx-3 gy-3">
+        <div class="col-12 mb-l">
+            <div class="input-group input-group-lg mb-2">
+                <input type="text" wire:model="search" class="form-control border-0" id="exampleFormControlInput1"
+                    placeholder="Search">
+                <span class="input-group-text border-0" id="basic-addon2" style="background: #f8fafc"><i
+                        class="bx bx-search"></i></span>
+            </div>
+            <div class="menu container col-md-12 py-0 px-0">
+                <ul class="list-group list-group-horizontal py-0">
+                    <li class="list-group-item border-0 p-0 mx-0 bg-transparent">
+                        <input type="radio" class="btn-check btn-primary" name="category" id="semua" autocomplete="off"
+                            value="" wire:model="category" checked>
+                        <label class="btn btn-outline-primary pt-s pb-s rounded-pill text-m me-m"
+                            for="semua">Semua</label>
+                    </li>
+                    @foreach ($categories as $item)
+                        <li class="list-group-item border-0 p-0 mx-0 bg-transparent">
+                            <input type="radio" class="btn-check btn-check-color" name="category"
+                                id="{{ $item->title . $item->order }}" value="{{ $item->id }}" autocomplete="off"
+                                wire:model="category">
+                            <label class=" btn btn-outline-primary pt-s pb-s rounded-pill text-m me-m"
+                                for="{{ $item->title . $item->order }}">{{ $item->title }}</label>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
         @foreach ($data as $item)
-            <div class="col-6 col-sm-6 col-md-4 ">
+            <div class="col-6 col-md-4 ">
                 <div class="card rounded-3 border-neutral-20 border">
                     <div class="image-ratio rounded-top rounded-3"
                         style="background-image:url({{ url('uploads/product/' . $item->image) }})">

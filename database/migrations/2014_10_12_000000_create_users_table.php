@@ -30,6 +30,9 @@ return new class extends Migration
             $table->string('color',20)->default('#ffffff')->nullable();
             $table->integer('link_limit')->default(3)->nullable();
             $table->string('password');
+            $table->string('seo_title',350)->nullable();
+            $table->string('seo_description',350)->nullable();
+            $table->string('facebook_pixel_id',60)->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

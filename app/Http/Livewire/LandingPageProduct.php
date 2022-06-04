@@ -41,7 +41,18 @@ class LandingPageProduct extends Component
             session()->put('visit_landing_'.$this->product->id, Carbon::now());
             $this->addVisitor($this->product->id,"product");
         }
-        return view('livewire.landing-page-product')->layout('layouts.base');
+
+         $data = [
+            'profile_title' => $this->user->profile_title,
+            'seo_title' => $this->product->seo_title,
+            'seo_description' => $this->product->seo_description,
+            'facebook_pixel_id' => $this->product->facebook_pixel_id,
+            'background_color' => $this->user->background_color,
+            'color' => $this->user->color,
+            'background' => $this->user->background,
+        ];
+
+        return view('livewire.landing-page-product')->layout('layouts.base', ['data' => $data]);
     }
 
     public function addVisitor($itemId, $type){

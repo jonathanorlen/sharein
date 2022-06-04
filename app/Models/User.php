@@ -38,6 +38,9 @@ class User extends Authenticatable
         'color',
         'link_limit',
         'password',
+        'seo_title',
+        'seo_description',
+        'facebook_pixel_id',
     ];
 
     /**

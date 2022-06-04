@@ -14,6 +14,9 @@
             <div class="mb-3 mt-3 p-3">
                 <input type="file" wire:model="image" class="form-control @error('image') is-invalid @enderror"
                     id="imgInp" id="exampleInputEmail1" aria-describedby="emailHelp">
+                @error('image')
+                    <span class="text-danger error">{{ $message }}</span>
+                @enderror
             </div>
         </div>
         <div class="modal-footer">
@@ -25,7 +28,13 @@
                 </div>
                 <div class="col-6">
                     <div class="d-grid">
-                        <button type="button" class="btn btn-lg btn-primary" wire:click="create">Simpan</button>
+                        <button type="button" class="btn btn-lg btn-primary" wire:click="create"
+                            wire:loading.attr="disabled" wire:target="create,update">Simpan
+                            <div wire:loading wire:target="create"
+                                class="spinner-border text-light spinner-border-sm ms-2" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>

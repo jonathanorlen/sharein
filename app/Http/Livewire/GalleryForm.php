@@ -16,10 +16,16 @@ class GalleryForm extends Master
     }
 
     public function rules(){
-        $rules = ['image' => 'required'];
+        $rules = ['image' => 'required|mimes:jpg,jpeg,png|max:2048'];
 
         return $rules;
     }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+    
     public function create(){
         $data = $this->validate();
         

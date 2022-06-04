@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-md-top">
+<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-md-top" data-turbolinks-permanent>
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand me-4" href="/">
@@ -105,8 +105,9 @@
                             <hr class="dropdown-divider">
 
                             <!-- Authentication -->
-                            <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
+                            <x-jet-dropdown-link href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                                                 document.getElementById('logout-form').submit();">
                                 {{ __('Log out') }}
                             </x-jet-dropdown-link>
                             <form method="POST" id="logout-form" action="{{ route('logout') }}">
