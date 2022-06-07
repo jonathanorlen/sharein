@@ -61,7 +61,7 @@
                     <div class="card-body">
                         <div class="d-flex flex-column bd-highlight">
                             <div class="">
-                                <span class="h3 truncate-overflow ">{{ $item->title }}</span>
+                                <span class="h3 truncate-overflow product-title">{{ $item->title }}</span>
                             </div>
                             <div class="">
                                 <span class="text-m text-primary">{{ format_rupiah($item->price) }}</span>

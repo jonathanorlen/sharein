@@ -75,6 +75,7 @@ class LandingPageProduct extends Component
         Visitor::create([
             'itemId' => $itemId,
             'country'  => $geouipInfo->country,
+            'city'  => $geouipInfo->city,
             'type' => $type,
             'device' => $device,
             'platform' => $agent->platform(),

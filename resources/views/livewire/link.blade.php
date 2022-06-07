@@ -45,8 +45,8 @@
                         <div class="form-check form-switch">
                             <input class="form-check-input fs-5 text-neutral-100" style="margin-left:-2em"
                                 type="checkbox" id="flexSwitchCheckChecked"
-                                @if ($item->status == 'active' && $item->name != '' && $item->url != '') checked @endif
-                                @if ($item->name == '' || $item->url == '') disabled @endif
+                                @if ($item->status == 'active' && $item->title != '' && $item->url != '') checked @endif
+                                @if ($item->title == '' || $item->url == '') disabled @endif
                                 wire:change="update($event.target.checked, {{ $item->id }},{{ '"status"' }})">
                         </div>
                     </div>
@@ -103,6 +103,5 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
-
     </style>
 @endpush

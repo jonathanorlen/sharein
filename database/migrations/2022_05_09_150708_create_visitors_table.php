@@ -18,6 +18,7 @@ class CreateVisitorsTable extends Migration
             $table->bigInteger('itemId')->nullable();
             $table->string('type',50)->nullable();
             $table->string('country',70)->nullable();
+            $table->string('city',70)->nullable();
             $table->string('device',35)->nullable();
             $table->string('platform',35)->nullable();
             $table->string('browser',35)->nullable();
