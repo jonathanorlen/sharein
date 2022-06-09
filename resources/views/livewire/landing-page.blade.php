@@ -1,4 +1,4 @@
-<div class="col-12 col-sm-6 col-md-5">
+<div class="col-12 col-sm-6 col-md-5 pb-3">
     <div class="d-flex flex-column align-items-center mb-5">
         <img src="@if ($user->profile_picture) {{ asset('uploads/profile/' . $user->profile_picture) }}  @else {{ asset('attribute/image/placeholder-image.jpg') }} @endif"
             class="mb-4" alt="logo" style="width: 108px;height: 108px;border-radius: 50%;display: block;">
@@ -184,7 +184,7 @@
         </div>
     </div>
     <button class="btn btn-transparent position-absolute top-0 end-0 mt-2 me-2 mt-md-4 me-md-4 p-2" id="share-button"
-        onclick="toastSuccess()"><i class="bx bx-share-alt"></i></button>
+        onclick="toastSuccess()"><i class="bx bx-share-alt fs-4" style=""></i></button>
 </div>
 @push('script')
     <script>
