@@ -29,6 +29,7 @@
 
     @stack('modals')
 
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
     @include('layouts.partials.scripts')
     @stack('scripts')
 </body>

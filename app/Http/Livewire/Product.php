@@ -28,5 +28,6 @@ class Product extends Component
     public function delete(){
         Link::where([['userId',auth()->id()],['productId',$this->id_delete]])->delete();
         Data::find($this->id_delete)->delete();
+        $this->dispatchBrowserEvent("refreshIframe");
     }
 }

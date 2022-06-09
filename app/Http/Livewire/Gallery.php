@@ -22,5 +22,6 @@ class Gallery extends Component
 
     public function delete(){
         GalleryModel::find($this->id_delete)->delete();
+        $this->dispatchBrowserEvent("refreshIframe");
     }
 }

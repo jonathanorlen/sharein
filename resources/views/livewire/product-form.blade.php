@@ -1,4 +1,7 @@
 <div class="col-md-6 mt-4 offset-md-3">
+    @if ($errors->any())
+        {{ implode('', $errors->all('<div>:message</div>')) }}
+    @endif
     <div class="card p-4">
         <div class="row">
             <div class="col-md-4 offset-md-4">
@@ -88,9 +91,9 @@
     <div class="d-grid mb-xxl mt-xl">
         <button @if ($type != 'edit') wire:click="create"@else wire:click="update" @endif
             class="btn btn-primary btn-lg" type="button" wire:loading.attr="disabled" wire:target="create,update">Simpan
-            <div wire:loading wire:target="create" class="spinner-border text-light spinner-border-sm ms-2"
+            <div wire:loading wire:target="create,update" class="spinner-border text-light spinner-border-sm ms-2"
                 role="status">
-                <span class="visually-hidden">Loading...</span>
+                <span class="visually-hidden"></span>
             </div>
         </button>
     </div>
@@ -108,15 +111,13 @@
             position: relative;
             /* If you want text inside of it */
         }
-
     </style>
 @endpush
 @push('scripts')
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
-    <script src="{{ asset('plugin/summernote/summernote-bs4.min.js') }}" defer data-turbolinks-track="reload"></script>
+    <script src="{{ asset('plugin/summernote/summernote-bs4.min.js') }}"></script>
     <script>
         $(document).ready(function() {
             console.clear();

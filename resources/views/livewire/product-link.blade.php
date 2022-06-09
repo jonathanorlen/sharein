@@ -14,7 +14,7 @@
             Link
             <div class="spinner-border text-light spinner-border-sm ms-2" role="status" wire:loading
                 wire:target="create">
-                <span class="sr-only">Loading...</span>
+                <span class="sr-only"></span>
             </div>
         </button>
     </div>
@@ -54,8 +54,8 @@
                         <div class="form-check form-switch">
                             <input class="form-check-input fs-5 text-neutral-100" style="margin-left:-2em"
                                 type="checkbox" id="flexSwitchCheckChecked"
-                                @if ($item->status == 'active' && $item->name != '' && $item->url != '') checked @endif
-                                @if ($item->name == '' || $item->url == '') disabled @endif
+                                @if ($item->status == 'active' && $item->title != '' && $item->url != '') checked @endif
+                                @if ($item->title == '' || $item->url == '') disabled @endif
                                 wire:change="update($event.target.checked, {{ $item->id }},{{ '"status"' }})">
                         </div>
                     </div>
@@ -84,6 +84,5 @@
             position: relative;
             /* If you want text inside of it */
         }
-
     </style>
 @endpush

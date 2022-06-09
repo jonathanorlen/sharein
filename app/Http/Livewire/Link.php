@@ -83,5 +83,6 @@ class Link extends Component
     public function delete(){
         Links::find($this->id_delete)->delete();
         Links::where([['userId','=',$this->user_id_delete], ['order','>',$this->order_delete], ['productId',NULL]])->decrement('order',1);
+        $this->dispatchBrowserEvent("refreshIframe");
     }
 }

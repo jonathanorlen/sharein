@@ -34,7 +34,7 @@ class ProductForm extends Master
             'category' => 'nullable',
             'price' => 'required',
             'title' => 'required|max:100',
-            'description' => 'required',
+            'description' => 'nullable',
             'image' => 'required|mimes:jpg,jpeg,png|max:2048',
             'seo_title' => 'nullable',
             'seo_description' => 'nullable',

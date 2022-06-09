@@ -59,5 +59,6 @@ class Banner extends Component
     public function delete(){
         BannerModel::find($this->id_delete)->delete();
         BannerModel::where([['userId','=',$this->user_id_delete], ['order','>',$this->order_delete]])->decrement('order',1);
+        $this->dispatchBrowserEvent("refreshIframe");
     }
 }
