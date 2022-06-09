@@ -184,7 +184,7 @@
         </div>
     </div>
     <button class="btn btn-transparent position-absolute top-0 end-0 mt-2 me-2 mt-md-4 me-md-4 p-2" id="share-button"
-        onclick="toastSuccess()"><i class="bx bx-share-alt></i></button>
+        onclick="toastSuccess()"><i class="bx bx-share-alt"></i></button>
 </div>
 @push('script')
     <script>

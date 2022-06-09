@@ -18,31 +18,30 @@
             font-family: 'Inter';
             background: #fff;
         }
-
     </style>
 </head>
 
 <body>
     <nav class="container p-4  bg-white">
-        <div class="col-12">
-            <div class="d-flex justify-content-end">
-                <img src="{{ asset('image/logo.svg') }}" alt="" class="me-auto my-auto" style="height: 24px">
-                @if (Route::has('login'))
-                    <div class="">
-                        @auth
-                            <a href="{{ url('panel/website/link') }}"
-                                class="text-primary btn text-l px-l py-m rounded-m">Dashboard</a>
-                        @else
-                            <a href="{{ route('login') }}" class="text-primary btn text-l px-l py-m rounded-m">Masuk</a>
+        <img src="{{ asset('image/logo.svg') }}" alt="" class="me-auto my-auto d-block d-md-none" style="height: 24px">
+        <div class="d-flex justify-content-end">
+            <img src="{{ asset('image/logo.svg') }}" alt="" class="me-auto my-auto d-none d-md-block"
+                style="height: 24px">
+            @if (Route::has('login'))
+                <div class="">
+                    @auth
+                        <a href="{{ url('panel/website/link') }}"
+                            class="text-primary btn text-l px-l py-m rounded-m">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}" class="text-primary btn text-l px-l py-m rounded-m">Masuk</a>
 
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}"
-                                    class="ms-xl btn btn-primary text-l px-l py-m rounded-m">Registrasi</a>
-                            @endif
-                    @endif
-                </div>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}"
+                                class="ms-xl btn btn-primary text-l px-l py-m rounded-m">Registrasi</a>
+                        @endif
                 @endif
             </div>
+            @endif
             </div>
         </nav>
         <section class="container position-relative">
