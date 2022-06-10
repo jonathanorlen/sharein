@@ -600,7 +600,7 @@ h2, .h2 {
 }
 
 h3, .h3 {
-  font-size: calc(.90rem + 0.39vw);
+  font-size: calc(1rem + 0.39vw);
 }
 @media (min-width: 1200px) {
   h3, .h3 {
