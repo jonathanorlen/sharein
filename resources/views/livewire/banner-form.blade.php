@@ -2,9 +2,7 @@
     <div class="modal-content">
         <div class="modal-header border-bottom-0">
             <h5 class="modal-title" id="exampleModalLabel">Upload Gambar</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-0">
             @if ($image)
@@ -13,7 +11,7 @@
 
                 </div>
             @else
-                <img src="{{ asset('attribute/image/placeholder-image.jpg') }}" alt="" class="w-100"
+                <img src="{{ asset('attribute/image/rectangle.jpg') }}" alt="" class="w-100"
                     id="imageplaceholder">
             @endif
             <div class="mb-3 mt-3 p-3">
