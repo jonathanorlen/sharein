@@ -4,8 +4,8 @@
         <a href="{{ URL::to('/' . $userDomain) }}" class="btn btn-transparent" style="top: 2%;left: 2%;"><i
                 class='bx bx-arrow-back'></i></a>
     </div>
-    <div class="mt-4 px-3 px-md-3 h2 text-neutral-100">{{ $product->title }}</div>
-    <div class="mt-1 px-3 px-md-3 h4 text-color">{{ format_rupiah($product->price) }}</div>
+    <h1 class="mt-4 px-3 px-md-3 h3 text-neutral-100 text-bold">{{ $product->title }}</h1>
+    <h2 class="mt-1 px-3 px-md-3 h3 text-color">{{ format_rupiah($product->price) }}</h2>
     <div class="d-grid gap-3 mt-4 px-3 px-md-3 ">
         @foreach ($links as $item)
             <a href="{{ $item->url }}" target="_blank"
@@ -13,7 +13,8 @@
                 style="height: 50px" wire:click="addVisitor({{ $item->id }},'link')">{{ $item->title }}</a>
         @endforeach
     </div>
-    <div class="mt-4 px-3 px-md-3 text-l text-neutral-80" style="word-break: break-all; ">
+    <div class="@if (!$links->isEmpty()) mt-4 @endif px-3 px-md-3 text-l text-neutral-80"
+        style="word-break: break-all; ">
         {{-- {{ $product->description }} --}}
         {!! $product->description !!}
     </div>
