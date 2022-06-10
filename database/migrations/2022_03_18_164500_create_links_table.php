@@ -18,7 +18,7 @@ class CreateLinksTable extends Migration
             $table->bigInteger('userId');
             $table->bigInteger('productId')->nullable();
             $table->string('title', 50)->nullable();
-            $table->string('url', 350)->nullable();
+            $table->text('url')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->integer('order')->default(1);
             $table->timestamps();

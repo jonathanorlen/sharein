@@ -22,14 +22,14 @@
             --landing-color: {{ $data['color'] }};
             --landing-background: {{ $data['background'] }};
         }
-
     </style>
     @stack('style')
 </head>
 
 <body class="background-color">
-    <div class="container @if (request()->segment(2)) px-0 px-md-2 @endif">
-        <div class="row justify-content-md-center @if (request()->segment(2)) pt-0 @else pt-5 @endif">
+    {{-- <div class="container @if (request()->segment(2)) px-0 px-md-2 @endif"> --}}
+    <div class="container">
+        <div class="row justify-content-md-center @if (request()->segment(2)) no @else pt-5 @endif">
             {{-- <div class="col-md-6 col-12"> --}}
             {{ $slot }}
             {{-- </div> --}}
@@ -65,19 +65,15 @@
             pswpModule: () => import('{{ asset('plugin/photoswipe/photoswipe.esm.js') }}')
         });
         lightbox.init();
-
-        const share_button = document.querySelector('#share-button');
-        share_button.addEventListener('click', () => {
-            const URL = window.location.href.slice(7);
-
-            navigator.clipboard.writeText(URL);
-        });
     </script>
     <script>
         function toastSuccess() {
+            const URL = window.location.href.slice(7);
+            console.log(window.location.href)
+            navigator.clipboard.writeText(window.location.href);
+
             var toastLiveExample = document.getElementById('toast-success')
             var toast = new bootstrap.Toast(toastLiveExample)
-            console.log("oke");
             toast.show()
         }
 

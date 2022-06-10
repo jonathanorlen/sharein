@@ -1,7 +1,4 @@
 <div class="col-md-6 mt-4 offset-md-3">
-    @if ($errors->any())
-        {{ implode('', $errors->all('<div>:message</div>')) }}
-    @endif
     <div class="card p-4">
         <div class="row">
             <div class="col-md-4 offset-md-4">
@@ -26,6 +23,9 @@
                     class="text-danger">*</span></label>
             <input type="text" wire:model.lazy="title" class="form-control  @error('title') is-invalid @enderror"
                 id="exampleFormControlInput1" placeholder="" wire:loading.attr="disabled" wire:target="create,update">
+            @error('title')
+                <span class="text-danger error">{{ $message }}</span>
+            @enderror
         </div>
         <div class="mb-4">
             <label for="exampleFormControlInput1" class="form-label">Kategori</label>

@@ -1,7 +1,7 @@
 <div class="col-12 col-sm-6 col-md-5 pb-3">
-    <div class="d-flex flex-column align-items-center mb-5">
+    <div class="d-flex flex-column align-items-center mb-4">
         <img src="@if ($user->profile_picture) {{ asset('uploads/profile/' . $user->profile_picture) }}  @else {{ asset('attribute/image/placeholder-image.jpg') }} @endif"
-            class="mb-4" alt="logo" style="width: 108px;height: 108px;border-radius: 50%;display: block;">
+            class="mb-4" alt="logo" style="width: 96px;height: 96px;border-radius: 50%;display: block;">
         <div class="d-flex flex-column align-items-center gap-0 @if (@$social_media->unanswered_question_count > 4) mb-3 @endif">
             <span class="h3 text-center mb-1" style="font-weight: 600;">
                 {{ $user->profile_title ?? 'My Bisnis' }}
@@ -54,7 +54,7 @@
         </div>
     </div>
     <div>
-        <ul class="nav nav-tabs mb-3 d-flex justify-content-center flex-nowrap" id="myTab" role="tablist">
+        <ul class="nav nav-tabs mb-2 d-flex justify-content-center flex-nowrap" id="myTab" role="tablist">
             @if ($total_product > 0 || !$links->isEmpty() || !$banners->isEmpty())
                 <li class="nav-item">
                     <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab"

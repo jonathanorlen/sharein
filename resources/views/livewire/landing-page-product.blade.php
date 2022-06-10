@@ -1,4 +1,4 @@
-<div class="col-12 col-sm-6 col-md-5 pb-5 bg-white">
+<div class="col-12 col-sm-6 col-md-5 pb-5 p-0 bg-white">
     <div class="container p-0 position-relative">
         <img src="{{ url('uploads/product/' . $product->image) }}" class="w-100" alt="">
         <a href="{{ URL::to('/' . $userDomain) }}" class="btn btn-transparent" style="top: 2%;left: 2%;"><i
