@@ -9,14 +9,18 @@ use App\Models\Link;
 
 class Product extends Component
 {   
-    public $data, $id_delete, $search, $categories, $category;
+    public $data, $id_delete, $search, $categories, $category = NULL;
 
     protected $listeners = ['refreshData' => '$refresh',
                             'delete'];
                             
     public function render()
     {   
-        $this->data = Data::orderBy('updated_at','asc')->where([['userId',auth()->id()],['title','like','%'.$this->search.'%'],['categoryId','like','%'.$this->category.'%']])->get();
+        $data = Data::orderBy('updated_at','asc')->where([['userId',auth()->id()],['title','like','%'.$this->search.'%']]);
+        if($this->category){
+            $data->where('categoryId','LIKE','%'.$this->category.'%');
+        }
+        $this->data = $data->get();
         $this->categories = Category::orderBy('order','asc')->where('userId',auth()->id())->get();
         return view('livewire.product');
     }

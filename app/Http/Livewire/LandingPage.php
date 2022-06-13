@@ -61,10 +61,11 @@ class LandingPage extends Component
 
     public function render()
     {   
-        $this->products = Product::where('userId','=',$this->userId)
-                ->where('categoryId','like','%'.$this->select_category.'%')
-                ->where('title','like','%'.$this->search.'%')
-                ->get();
+        $product = Product::orderBy('updated_at','asc')->where([['userId',auth()->id()],['title','like','%'.$this->search.'%']]);
+        if($this->select_category){
+            $product->where('categoryId','LIKE','%'.$this->select_category.'%');
+        }
+        $this->products = $product->get();
         
         if(session()->has('visit_landing')){
             if(session()->get('visit_landing')->addMinutes(5)->isPast()){
