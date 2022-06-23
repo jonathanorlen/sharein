@@ -47,7 +47,7 @@ class BannerForm extends Master
             $this->dispatchBrowserEvent("hide-modal");
             $this->emit('refreshData');
             $this->clear();
-        $this->dispatchBrowserEvent("refreshIframe");
+            $this->dispatchBrowserEvent("refreshIframe");
 
         }
     }

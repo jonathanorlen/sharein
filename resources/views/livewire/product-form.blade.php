@@ -10,8 +10,7 @@
             </div>
         </div>
         <div class="mb-4">
-            <label for="exampleFormControlInput1" class="form-label">Gambar<span
-                    class="text-danger">*</span></label>
+            <label for="exampleFormControlInput1" class="form-label">Gambar<span class="text-danger">*</span></label>
             <input type="file" wire:model="image" class="form-control @error('image') is-invalid @enderror"
                 id="exampleFormControlInput1" placeholder="" wire:loading.attr="disabled" wire:target="create,update">
             @error('image')
@@ -43,8 +42,7 @@
             @enderror
         </div>
         <div class="mb-4">
-            <label for="exampleFormControlInput1" class="form-label">Harga<span
-                    class="text-danger">*</span></label>
+            <label for="exampleFormControlInput1" class="form-label">Harga<span class="text-danger">*</span></label>
             <input type="number" wire:model="price" class="form-control @error('price') is-invalid @enderror"
                 id="exampleFormControlInput1" placeholder="" wire:loading.attr="disabled" wire:target="create,update">
         </div>
@@ -90,7 +88,8 @@
 
     <div class="d-grid mb-xxl mt-xl">
         <button @if ($type != 'edit') wire:click="create"@else wire:click="update" @endif
-            class="btn btn-primary btn-lg" type="button" wire:loading.attr="disabled" wire:target="create,update">Simpan
+            class="btn btn-primary btn-lg" type="button" wire:loading.attr="disabled"
+            wire:target="create,update">Simpan
             <div wire:loading wire:target="create,update" class="spinner-border text-light spinner-border-sm ms-2"
                 role="status">
                 <span class="visually-hidden"></span>
@@ -114,6 +113,7 @@
     </style>
 @endpush
 @push('scripts')
+    <script src="{{ url('plugin/jquery-3.6.0.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>

@@ -16,12 +16,12 @@
             @endif
             <div class="mb-3 mt-3 p-3">
                 <input type="file" wire:model="image" class="form-control @error('image') is-invalid @enderror"
-                    id="imgInp" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    id="imgInp" id="exampleInputEmail1" aria-describedby="emailHelp" accept="image/*">
             </div>
             <div class="mb-3 p-3">
                 <label for="validationServer02" class="form-label">Link</label>
-                <input type="text" wire:model="link" class="form-control @error('link') is-invalid @enderror" id="link"
-                    aria-describedby="linkHelp">
+                <input type="text" wire:model="link" class="form-control @error('link') is-invalid @enderror"
+                    id="link" aria-describedby="linkHelp">
                 @error('link')
                     <div id="validationServer05Feedback" class="invalid-feedback">
                         Please provide a valid zip.
@@ -38,7 +38,12 @@
                 </div>
                 <div class="col-6">
                     <div class="d-grid">
-                        <button type="button" class="btn btn-lg btn-primary" wire:click="create">Simpan</button>
+                        <button type="button" class="btn btn-lg btn-primary" wire:click="create">Simpan
+                            <div wire:loading wire:target="create"
+                                class="spinner-border text-light spinner-border-sm ms-2" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>

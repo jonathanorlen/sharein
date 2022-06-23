@@ -354,7 +354,7 @@
 
 .side-left {
   /* height: 100%; */
-  height: calc(100vh - 137px);
+  height: calc(100vh - 140px);
   overflow-y: scroll;
 }
 
