@@ -61,7 +61,7 @@ class LandingPage extends Component
 
     public function render()
     {   
-        $product = Product::orderBy('updated_at','asc')->where([['userId',auth()->id()],['title','like','%'.$this->search.'%']]);
+        $product = Product::orderBy('updated_at','asc')->where([['title','like','%'.$this->search.'%']]);
         if($this->select_category){
             $product->where('categoryId','LIKE','%'.$this->select_category.'%');
         }
