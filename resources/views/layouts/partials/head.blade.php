@@ -3,6 +3,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <title>{{ config('app.name', 'Laravel') }} | Panel</title>
+<link rel="shortcut icon" href="{{ asset('image/logo_title.png') }}" type="image/x-icon">
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
@@ -24,4 +25,4 @@
 @livewireScripts
 <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js" defer
-data-turbolinks-track="reload"></script>
+    data-turbolinks-track="reload"></script>
