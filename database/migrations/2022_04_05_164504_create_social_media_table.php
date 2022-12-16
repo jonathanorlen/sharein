@@ -16,6 +16,7 @@ class CreateSocialMediaTable extends Migration
     {
         Schema::create('social_media', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pagesId')->references('id')->on('pages')->cascadeOnDelete();
             $table->foreignId('userId')->references('id')->on('users')->cascadeOnDelete();
             $table->string('facebook', 100)->nullable();
             $table->string('instagram', 100)->nullable();

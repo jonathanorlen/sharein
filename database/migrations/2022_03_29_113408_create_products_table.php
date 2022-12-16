@@ -16,6 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('title', 100)->nullable();
+            $table->foreignId('pagesId')->references('id')->on('pages')->cascadeOnDelete();
             $table->foreignId('userId')->references('id')->on('users')->cascadeOnDelete();
             $table->foreignId('categoryId')->nullable()->references('id')->on('categories')->nullable()->cascadeOnDelete();
             $table->string('image', 350)->nullable()->default('text');

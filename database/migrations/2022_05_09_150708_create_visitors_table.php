@@ -15,6 +15,7 @@ class CreateVisitorsTable extends Migration
     {
         Schema::create('visitors', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pagesId')->references('id')->on('pages')->cascadeOnDelete();
             $table->bigInteger('itemId')->nullable();
             $table->string('type',50)->nullable();
             $table->string('country',70)->nullable();

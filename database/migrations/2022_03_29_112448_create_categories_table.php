@@ -15,6 +15,7 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pagesId')->references('id')->on('pages')->cascadeOnDelete();
             $table->foreignId('userId')->references('id')->on('users')->cascadeOnDelete();
             $table->integer('order')->unsigned()->nullable()->default(1);
             $table->string('title', 60)->nullable();

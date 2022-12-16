@@ -15,6 +15,7 @@ class CreateBannersTable extends Migration
     {
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pagesId')->references('id')->on('pages')->cascadeOnDelete();
             $table->foreignId('userId')->references('id')->on('users')->cascadeOnDelete();
             $table->string('image', 350)->nullable();
             $table->string('link', 250)->nullable();

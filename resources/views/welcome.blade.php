@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>ShareIn</title>
+    <title>{{ config('app.name') }} </title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -23,7 +23,8 @@
 
 <body>
     <nav class="container p-4  bg-white">
-        <img src="{{ asset('image/logo.svg') }}" alt="" class="me-auto my-auto d-block d-md-none" style="height: 24px">
+        <img src="{{ asset('image/logo.svg') }}" alt="" class="me-auto my-auto d-block d-md-none"
+            style="height: 24px">
         <div class="d-flex justify-content-end">
             <img src="{{ asset('image/logo.svg') }}" alt="" class="me-auto my-auto d-none d-md-block"
                 style="height: 24px">
@@ -91,8 +92,8 @@
                         alt="" style="position: absolute;width: 44px;height: 44px;left: 5%;top: 4%;">
                     <img src="{{ asset('image/frontend/icon/twitter_icon.png') }}" class="d-none d-sm-block downup"
                         alt="" style="position: absolute;width: 60px;height: 60px;left: 25%;top: 8%;">
-                    <img src="{{ asset('image/frontend/icon/tiktok_icon.png') }}" class="d-none d-sm-block updown" alt=""
-                        style="position: absolute;width: 52px;height: 52px;left: 12%;top: 18%;">
+                    <img src="{{ asset('image/frontend/icon/tiktok_icon.png') }}" class="d-none d-sm-block updown"
+                        alt="" style="position: absolute;width: 52px;height: 52px;left: 12%;top: 18%;">
                     <img src="{{ asset('image/frontend/icon/telegram_icon.png') }}" class="d-none d-sm-block downup"
                         alt="" style="position: absolute;width: 48px;height: 48px;left: 20%;top: 23%;">
                     <img src="{{ asset('image/frontend/icon/youtube_icon.png') }}" class="d-none d-sm-block updown"
@@ -101,8 +102,8 @@
                         alt="" style="position: absolute;width: 40px;height: 40px;left: 95%;top: 3%;">
                     <img src="{{ asset('image/frontend/icon/facebook_icon.png') }}" class="d-none d-sm-block updown"
                         alt="" style="position: absolute;width: 48px;height: 48px;left: 78%;top: 25%;">
-                    <img src="{{ asset('image/frontend/icon/shop_icon.png') }}" class="d-none d-sm-block downup" alt=""
-                        style="position: absolute;width: 44px;height: 44px;left: 85%;top: 17%;">
+                    <img src="{{ asset('image/frontend/icon/shop_icon.png') }}" class="d-none d-sm-block downup"
+                        alt="" style="position: absolute;width: 44px;height: 44px;left: 85%;top: 17%;">
                     <img src="{{ asset('image/frontend/icon/chart_left.png') }}" class="d-none d-sm-block" alt=""
                         style="position: absolute;width: 207px;height: 262.5px;left: 10%;top: 891px;">
                     <img src="{{ asset('image/frontend/icon/chart_right.png') }}" class="d-none d-sm-block" alt=""
@@ -111,7 +112,8 @@
                 <div class="col-12 mt-xxxxl">
                     <div class="row">
                         <div class="col-md-4 d-flex flex-column align-items-center mb-4 mb-md-0">
-                            <img src="{{ asset('image/frontend/icon/katalog_icon.png') }}" style="width: 64px" alt="">
+                            <img src="{{ asset('image/frontend/icon/katalog_icon.png') }}" style="width: 64px"
+                                alt="">
                             <h3 class="mt-l text-neutral-100 h3 mb-s" style="font-weight: 600">Produk Katalog</h3>
                             <span class="text-l text-neutral-70 text-center">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget convallis varius vitae libero
@@ -119,7 +121,8 @@
                             </span>
                         </div>
                         <div class="col-md-4 d-flex flex-column align-items-center mb-4 mb-md-0">
-                            <img src="{{ asset('image/frontend/icon/bisnis_icon.png') }}" style="width: 64px" alt="">
+                            <img src="{{ asset('image/frontend/icon/bisnis_icon.png') }}" style="width: 64px"
+                                alt="">
                             <h3 class="mt-l text-neutral-100 h3 mb-s" style="font-weight: 600">Bisnis Profile</h3>
                             <span class="text-l text-neutral-70 text-center">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget convallis varius vitae libero
@@ -127,7 +130,8 @@
                             </span>
                         </div>
                         <div class="col-md-4 d-flex flex-column align-items-center mb-4 mb-md-0">
-                            <img src="{{ asset('image/frontend/icon/galeri_icon.png') }}" style="width: 64px" alt="">
+                            <img src="{{ asset('image/frontend/icon/galeri_icon.png') }}" style="width: 64px"
+                                alt="">
                             <h3 class="mt-l text-neutral-100 h3" style="font-weight: 600">Galeri</h3>
                             <span class="text-l text-neutral-70 text-center">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget convallis varius vitae libero

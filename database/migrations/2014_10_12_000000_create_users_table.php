@@ -16,23 +16,8 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('domain');
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('profile_picture')->nullable();
-            $table->string('profile_title')->nullable();
-            $table->text('bio')->nullable();
-            $table->text('about')->nullable();
-            $table->string('address',200)->nullable();
-            $table->text('maps')->nullable();
-            $table->string('background',20)->default('#ffffff')->nullable();
-            $table->string('background_color',20)->default('#0751D8')->nullable();
-            $table->string('color',20)->default('#ffffff')->nullable();
-            $table->integer('link_limit')->default(3)->nullable();
-            $table->string('password');
-            $table->string('seo_title',350)->nullable();
-            $table->string('seo_description',350)->nullable();
-            $table->string('facebook_pixel_id',60)->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();

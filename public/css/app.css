@@ -71,6 +71,19 @@
   --neutral-80: #4D535E;
   --neutral-90: #343A47;
   --neutral-100: #010919;
+  
+  /* Success */
+  --success-25: #E6F7EF;
+  --success-50: #ABE3C9;
+  --success-100: #81D5AE;
+  --success-200: #57C793;
+  --success-300: #2DB978;
+  --success-400: #03AB5D;
+  --success-500: #038E4E;
+  --success-600: #02723E;
+  --success-700: #02562F;
+  --success-800: #01391F;
+  --success-900: #012213;
 
   /* Spacing */
   --spacing-s : 0.25rem;
@@ -5373,18 +5386,28 @@ textarea.form-control-lg {
 
 .badge {
   display: inline-block;
-  padding: 0.35em 0.65em;
-  font-size: 0.75em;
-  font-weight: 700;
-  line-height: 1;
+  padding: 0.15em 0.70em;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1.25rem;
   color: #fff;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 0.25rem;
 }
+
+.badge-success {
+  background: var(--success-400);
+  color: var(--neutral-10);
+}
+
 .badge:empty {
   display: none;
+}
+
+.badge-pill{
+  border-radius: 20rem;
 }
 
 .btn .badge {
@@ -12088,4 +12111,103 @@ textarea.form-control-lg {
 
 .owl-dot.active span {
   background: var(--landing-background-color) !important;
+}
+
+@media only screen and (max-width : 576px)
+{
+  .page-card {
+    overflow-x: auto !important;
+    flex-wrap: nowrap;
+    scrollbar-width: none; 
+  }
+
+  .page-card::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.page-card > .page-card-item {
+  cursor: pointer; 
+}
+
+.page-card > .page-card-item > .page-card-item-background {
+  background: #EEF2F6;
+  width:100%;
+  padding-top:140%;
+  position:relative;
+  border-radius:8px
+}
+
+.page-card > .page-card-item > .page-card-item-background > .page-card-item-profile{
+            position: absolute;
+            top: 30%;
+            left: 35%;
+            right: 50%;
+            width: 30%;
+            border-radius: 100%;
+}
+
+.page-card > .page-card-item > .page-card-item-background > .page-card-item-name{
+            position: absolute;
+            top: 56%;
+            left: 6%;
+            right: 6%;
+            width: 88%;
+            text-align: center;
+            font-size: 16px;
+}
+
+.page-card > .page-card-item > .page-card-item-background > .badge{
+  position: absolute;
+  top: 4%;
+  left: 6%;
+}
+
+.page-card > .page-card-item > .page-card-item-background > .page-card-item-edit{
+  position: absolute;
+  top: 6%;
+  right: 6%;
+}
+
+.page-card > .page-card-item-add > .page-card-item-background {
+  background: #FCFCFD;
+  width:100%;
+  padding-top:140%;
+  position:relative;
+  border-radius:8px;
+  border-color: #EEF2F6;
+  border-style: dashed;
+  color: #697586;
+}
+.page-card > .page-card-item-add{
+  cursor: pointer;
+}
+
+.page-card > .page-card-item-add > .page-card-item-background:hover {
+  background: #EEF2F6;
+  border-color: #CDD5DF;
+  color: #364152;
+}
+
+.page-card > .page-card-item-add > .page-card-item-background:active {
+  background: #E3E8EF;
+  border-color: #9AA4B2;
+  color: #202939;
+}
+
+.page-card > .page-card-item-add > .page-card-item-background > .page-card-item-name{
+  position: absolute;
+  top: 56%;
+  left: 6%;
+  right: 6%;
+  width: 88%;
+  text-align: center;
+  font-size: 14px;
+}
+
+.page-card > .page-card-item-add > .page-card-item-background > .page-card-item-icon{
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  width: 40% !important;
 }

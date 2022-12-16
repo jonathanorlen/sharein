@@ -12,20 +12,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/{domain}', \App\Http\Livewire\LandingPage::class)->name('landing_page');
+// Route::get('/{domain}/{product}', \App\Http\Livewire\LandingPageProduct::class)->name('landing_page_product');
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{domain}', \App\Http\Livewire\LandingPage::class)->name('landing_page');
-Route::get('/{domain}/{product}', \App\Http\Livewire\LandingPageProduct::class)->name('landing_page_product');
-
-
 Route::middleware(['auth:sanctum', 'verified'])->prefix('panel')->group(function(){
     // Route::view('/dashboard', 'dashboard')->name('dashboard');
-    Route::get('/statistik/dashboard', \App\Http\Livewire\Analytics::class)->name("statistik");
     
-    Route::prefix('website')->group(function(){
+    //Dashboard
+    Route::get('dashboard', \App\Http\Livewire\Dashboard::class)->name("dashboard");
+    
+    Route::prefix('page')->group(function(){
+        
+        Route::get('/statistik/dashboard', \App\Http\Livewire\Analytics::class)->name("statistik");
         //Link
         Route::get('/link', \App\Http\Livewire\Link::class)->name("link");
         
@@ -37,7 +39,7 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('panel')->group(function
         Route::get('/product/form/{product?}', \App\Http\Livewire\ProductForm::class)->name("product.create");
         Route::get('/product/edit/{product}', \App\Http\Livewire\ProductForm::class)->name("product.edit");
         Route::get('/product/link/{productId}', \App\Http\Livewire\ProductLink::class)->name("product.link");
-
+        
         //Social Media
         Route::get('/social-media', \App\Http\Livewire\SocialMedia::class)->name("socialMedia");
         
@@ -50,6 +52,5 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('panel')->group(function
         //setting
         Route::get('/setting', \App\Http\Livewire\Setting::class)->name("setting");
     });
-    
 
 });
