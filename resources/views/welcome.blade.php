@@ -51,7 +51,7 @@
                 <div class="col-12">
                     <div class="col-12 mt-xxxl text-center">
                         <h1 class="h1  text-neutral-100 mb-m" style="font-weight: 600 !important">Kembangkan bisnismu dengan
-                            ShareIn</h1>
+                            Beenausaha</h1>
                         <p class="text-l text-neutral-80 mb-0">
                             <span>
                                 Hubungkan social media bisnismu dengan marketplace ternama
